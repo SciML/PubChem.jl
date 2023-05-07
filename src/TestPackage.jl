@@ -1,5 +1,5 @@
 module TestPackage
 
-# Write your package code here.
-
+include("second_file.jl")
+export func_add
 end
