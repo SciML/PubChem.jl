@@ -4,9 +4,11 @@ authors = ["Lalit Chauhan"]
 version = "0.1.0"
 
 [deps]
+Catalyst = "479239e8-5488-4da2-87a7-35f2df7eef83"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
+ModelingToolkit = "961ee093-0014-501f-94e3-6117800e7a78"
 Symbolics = "0c5d862f-8b57-4792-8d23-62f2024744c7"
 
 [compat]

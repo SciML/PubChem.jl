@@ -17,6 +17,8 @@ end
 #     p
 # end
 
+# dict,array
+
 # # take an example reaction and start to balance it 
 # # http://mathgene.usc.es/matlab-profs-quimica/reacciones.pdf
 # # OH- + H+ -> H2O
