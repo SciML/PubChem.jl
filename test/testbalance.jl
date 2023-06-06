@@ -1,3 +1,4 @@
+using TestPackage, Test
 
 @testset "testbalance.jl" begin
 
