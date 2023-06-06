@@ -1,4 +1,3 @@
-using LinearAlgebra
 
 function parse_formula(formula)
     elements = Dict{String, Int}()
