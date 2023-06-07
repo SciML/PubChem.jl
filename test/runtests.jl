@@ -26,7 +26,7 @@ formula3 = parse_formula("SiCl4")
 end
 
 
-@testset "balance_reaction" begin
+@show @testset "balance_reaction" begin
 # Test balance_reaction
 reaction1 = balance_reaction("H2 + O2 → H2O")
 @test reaction1 == "2H2 + 1O2 → 2H2O"
