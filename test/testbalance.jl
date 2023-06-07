@@ -1,7 +1,3 @@
-using TestPackage, Test
-
-@testset "testbalance.jl" begin
-
 # Test parse_formula
 formula1 = parse_formula("H2O")
 @test formula1 == Dict("H" => 2, "O" => 1)
@@ -29,4 +25,3 @@ reaction4 = balance_reaction("SiCl4 + H2O → H4SiO4 + HCl")
 reaction5 = balance_reaction("H2 + Cl2 → HCl")
 @test reaction5 == "1H2 + 1Cl2 → 2HCl"
 
-end
