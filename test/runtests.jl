@@ -12,7 +12,7 @@ using TestPackage, Test , LinearAlgebra
 end
 
 
-@testset "testbalance.jl" begin
+@testset "parse_formula" begin
 # Test parse_formula
 formula1 = parse_formula("H2O")
 @test formula1 == Dict("H" => 2, "O" => 1)
@@ -23,7 +23,10 @@ formula2 = parse_formula("C6H12O6")
 formula3 = parse_formula("SiCl4")
 @test formula3 == Dict("Si" => 1, "Cl" => 4)
 
+end
 
+
+@testset "balance_reaction" begin
 # Test balance_reaction
 reaction1 = balance_reaction("H2 + O2 → H2O")
 @test reaction1 == "2H2 + 1O2 → 2H2O"
