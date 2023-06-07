@@ -1,4 +1,4 @@
-using TestPackage, Test
+using TestPackage, Test , LinearAlgebra
 
 @testset "TestPackage.jl" begin
     a = get_compound(962)
@@ -8,6 +8,7 @@ using TestPackage, Test
     @test a isa Dict
 
     @test extract_properties(a) isa Dict
+    @testset "testbalance.jl" begin include("testbalance.jl") end
 
 end
 
