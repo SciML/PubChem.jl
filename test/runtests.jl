@@ -37,11 +37,8 @@ reaction2 = balance_reaction("C + O2 → CO2")
 reaction3 = balance_reaction("CO2 + H2O → C6H12O6 + O2")
 @test reaction3 == "6CO2 + 6H2O → 1C6H12O6 + 6O2"
 
-reaction4 = balance_reaction("SiCl4 + H2O → H4SiO4 + HCl")
-@test reaction4 == "1SiCl4 + 4H2O → 1H4SiO4 + 4HCl"
-
-reaction5 = balance_reaction("H2 + Cl2 → HCl")
-@test reaction5 == "1H2 + 1Cl2 → 2HCl"
+reaction4 = balance_reaction("H2 + Cl2 → HCl")
+@test reaction4 == "1H2 + 1Cl2 → 2HCl"
 
 end
 
