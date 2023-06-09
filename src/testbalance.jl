@@ -1,4 +1,3 @@
-
 function parse_formula(formula)
     elements = Dict{String, Int}()
     i = 1
@@ -63,7 +62,13 @@ function balance_reaction(reaction)
     end
     
     coeffs = nullspace(A)
-    coeffs = round.(Int, coeffs ./ minimum(coeffs[coeffs .> 0]))  # normalize the coefficients to be integers
+    positive_coeffs = coeffs[coeffs .> 0]
+
+    if isempty(positive_coeffs)
+        return "Reaction cannot be balanced: coefficients do not allow for a balanced reaction."
+    end
+
+    coeffs = round.(Int, coeffs ./ minimum(positive_coeffs))  # normalize the coefficients to be integers
     
     balanced_reactants = [string(coeffs[j], reactants[j]) for j in 1:length(reactants)]
     balanced_products = [string(coeffs[j + length(reactants)], products[j]) for j in 1:length(products)]
@@ -72,6 +77,5 @@ function balance_reaction(reaction)
     
     return balanced_reaction
 end
-
 
 export balance_reaction
