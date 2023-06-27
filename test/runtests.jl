@@ -5,7 +5,8 @@ using TestPackage, Test , LinearAlgebra
     get_json_from_name("Oxygen") isa Dict
     get_json_from_cid(962) isa Dict
 
-    get_compound_properties()
+    get_compound_properties("Silicon") isa Dict
+    get_compound_properties(962) isa Dict
 end
 
 
