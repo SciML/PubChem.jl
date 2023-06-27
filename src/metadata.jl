@@ -1,4 +1,4 @@
-using HTTP, JSON ,Metadata
+using HTTP, JSON ,Symbolics, ModelingToolkit
 
 function get_json_from_url(url)
     # Send HTTP GET request
@@ -26,7 +26,6 @@ function extract_properties(data)
         "iupac_name_preferred" => data["PC_Compounds"][1]["props"][12]["value"]["sval"],
         "molecular_weight" => data["PC_Compounds"][1]["props"][18]["value"]["sval"],
         "molecular_formula" => data["PC_Compounds"][1]["props"][17]["value"]["sval"],
-        "inchi" => data["PC_Compounds"][1]["props"][20]["value"]["sval"],
         "smiles" => data["PC_Compounds"][1]["props"][19]["value"]["sval"]
     )
 
@@ -42,22 +41,27 @@ function get_compound_properties(name)
     return extract_properties(compound_data)
 end
 
-
-function attach_compound_properties(variable_name::String, compound_name::AbstractString)
-    # Convert string to symbol
-    variable_symbol = Symbol(variable_name)
-
-    # Fetch compound data
-    compound_data = get_compound(compound_name)
-  
-    # Extract the properties
-    properties = extract_properties(compound_data)
-    
-    # Attach metadata to the variable name
-    Metadata.attach_metadata(variable_symbol, properties)
-
+struct Compound
+    var::Num
+    metadata::Dict
 end
 
-# N = attach_compound_properties("N","Nitrogen")
+function Compound(varname::String, compound_name::Union{String,Int})
+    @variables var = Symbol(varname)
 
-# Metadata.metadata(N)
+    # Fetch compound data as metadata
+    metadata = get_compound_properties(compound_name)
+
+    # Create and return Compound
+    Compound(var, metadata)
+end
+
+
+# Carbon = Compound("C","Carbon")
+# N = Compound("N", 947)
+# N.var    # gives you the variable
+# N.metadata  # gives you metadata dict
+# N.metadata["molecular_weight"]  # gives you the molecular weight directly
+
+# Carbon.metadata
+

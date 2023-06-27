@@ -8,7 +8,7 @@ include("metadata.jl")
 include("testbalance.jl")
 
 export get_compound_properties
-export attach_compound_properties
+export Compound
 export balance_reaction
 export parse_formula
 
