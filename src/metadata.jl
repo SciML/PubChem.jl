@@ -1,4 +1,4 @@
-using HTTP, JSON ,Symbolics, ModelingToolkit
+using HTTP, JSON ,Symbolics
 
 function get_json_from_url(url)
     # Send HTTP GET request
