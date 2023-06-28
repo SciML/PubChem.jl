@@ -47,9 +47,10 @@ end
     @test Nitrogen.metadata isa Dict
     @test Nitrogen.metadata["molecular_weight"] isa String
     @test Nitrogen.name == "N"
-    H20 = Compound("H20",962)
-    @test Compound("H20",962) isa Compound
-    @test H20.metadata isa Dict
+    Water = Compound("H2O",962)
+    @test Compound("H2O",962) isa Compound
+    @test Water.metadata isa Dict
+    @test Water.name == "H2O"
     
 end
 

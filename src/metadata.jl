@@ -52,13 +52,13 @@ function Compound(varname::String, compound_name::Union{String, Int})
     @variables var_sym = Symbol(varname)
  
     # Store string representation 
-    Name = varname
+    name = varname
  
     # Fetch compound data as metadata
     metadata = get_compound_properties(compound_name)
  
     # Create and return Compound
-    Compound(var_sym, Name, metadata)
+    Compound(var_sym, name, metadata)
  end
 
 # Carbon = Compound("C","Carbon")
