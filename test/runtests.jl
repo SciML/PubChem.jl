@@ -42,12 +42,15 @@ end
 
 @testset "metadata" begin
 
-    N = Compound("N","Nitrogen")
+    Nitrogen = Compound("N","Nitrogen")
     @test Compound("N","Nitrogen") isa Compound
-    @test N.metadata isa Dict
-    @test N.metadata["molecular_weight"] isa String
-
-    Compound("N","Nitrogen") == Compound("N",947)
+    @test Nitrogen.metadata isa Dict
+    @test Nitrogen.metadata["molecular_weight"] isa String
+    @test Nitrogen.name == "N"
+    H20 = Compound("H20",962)
+    @test Compound("H20",962) isa Compound
+    @test H20.metadata isa Dict
+    
 end
 
 # # define Reaction (refer to Catalyst for the full answer)

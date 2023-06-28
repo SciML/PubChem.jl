@@ -43,19 +43,23 @@ end
 
 struct Compound
     var::Num
+    name ::String
     metadata::Dict
 end
 
-function Compound(varname::String, compound_name::Union{String,Int})
-    @variables var = Symbol(varname)
+function Compound(varname::String, compound_name::Union{String, Int})
 
+    @variables var_sym = Symbol(varname)
+ 
+    # Store string representation 
+    Name = varname
+ 
     # Fetch compound data as metadata
     metadata = get_compound_properties(compound_name)
-
+ 
     # Create and return Compound
-    Compound(var, metadata)
-end
-
+    Compound(var_sym, Name, metadata)
+ end
 
 # Carbon = Compound("C","Carbon")
 # N = Compound("N", 947)
