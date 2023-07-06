@@ -2,6 +2,8 @@ module TestPackage
 using HTTP,JSON
 using JSON3
 using LinearAlgebra
+using Catalyst
+using ModelingToolkit
 
 function extract_properties(data)
     # Extract the properties from the JSON data
