@@ -125,7 +125,7 @@ end
 # Gives 2 arrays with species values for reactants and products respectively:(Num[H2(t), O2(t)], Num[H2O(t)]) 
 # Automatically creates the species required for the reaction 
 
-Reaction(k,reactant_arr  ,product_arr,reactant_coeff, product_coeff) #WORKS
+# Reaction(k,reactant_arr  ,product_arr,reactant_coeff, product_coeff) #WORKS
 
 function create_balanced_reaction(reaction_str)
     # Balance the reaction.
