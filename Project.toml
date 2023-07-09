@@ -1,7 +1,7 @@
 name = "TestPackage"
 uuid = "1db272ca-bb6a-4d7c-9426-e93aef723262"
 authors = ["Lalit Chauhan"]
-version = "0.2.0"
+version = "0.3.0"
 
 [deps]
 Catalyst = "479239e8-5488-4da2-87a7-35f2df7eef83"
@@ -9,14 +9,15 @@ HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+ModelingToolkit = "961ee093-0014-501f-94e3-6117800e7a78"
 Symbolics = "0c5d862f-8b57-4792-8d23-62f2024744c7"
-
 
 [compat]
 Catalyst = "13.3"
 HTTP = "1.9.6"
 JSON = "0.21.4"
 JSON3 = "1.13.1"
+ModelingToolkit = "8.62.0"
 Symbolics = "5.0"
 julia = "1.9"
 
