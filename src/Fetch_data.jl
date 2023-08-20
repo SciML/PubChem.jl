@@ -65,11 +65,8 @@ macro Attach_Metadata(variable, name)
     return Expr(:block,escaped_setmetadata_expr)
 end
 
-
 properties(s::Num) = properties(ModelingToolkit.value(s))
 function properties(s)
     ModelingToolkit.getmetadata(s, CompoundProperties)
 end
 
-# @Attach_Metadata C "C"
-# properties(C)
