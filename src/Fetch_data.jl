@@ -20,7 +20,7 @@ end
 get_compound(x::Integer) = get_json_from_cid(x)
 get_compound(x::AbstractString) = get_json_from_name(x)
 
-function extract_propertiesx(data)
+function extract_properties(data)
     properties = Dict()
 
     # Get the information section from the JSON
