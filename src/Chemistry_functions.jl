@@ -18,12 +18,12 @@ function find_coefficient(reaction::Reaction, species)
 end
 
 # Number of Moles
-function moles(compound, molarity, volume)
-    return compound, molarity * volume
+function moles_by_volume(molarity, volume)
+    return  molarity * volume
 end
 
 
-function moles(compound, mass)
+function moles_by_mass(compound, mass)
     weight = molecular_weight(compound)
     return mass / weight
 end

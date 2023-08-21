@@ -1,14 +1,10 @@
-using PubChem, Test
+using  Catalyst, HTTP, JSON, Test, SafeTestsets ,PubChem
 
-@testset "PubChem" begin
-    a = get_compound(962)
-    b = get_compound("water")
-    
-    @test a == b
-    @test a isa Dict
+### Run the tests ###
+@time begin
+    @time @safetestset "JSON" begin include("Interface.jl") end
+    @time @safetestset "Chemistry" begin include("functions.jl") end
+end 
 
-    @test extract_properties(a) isa Dict
-
-end
 
 

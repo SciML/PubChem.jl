@@ -51,4 +51,3 @@ function charge(s)
         error("Charge not found in properties")
     end
 end
-

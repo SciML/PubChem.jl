@@ -80,6 +80,3 @@ macro Attach_Metadata(variable)
     escaped_setmetadata_expr = esc(setmetadata_expr)
     return Expr(:block,escaped_setmetadata_expr)
 end
-
-
-
