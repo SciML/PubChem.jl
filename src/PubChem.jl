@@ -11,7 +11,7 @@ export get_compound
 export extract_properties
 export @Attach_Metadata
 
-export molar_ratio, moles
+export molar_ratio, moles_by_mass , moles_by_volume
 export limiting_reagent, theoretical_yield
 
 export properties, molecular_weight

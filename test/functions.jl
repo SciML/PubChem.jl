@@ -1,3 +1,5 @@
+using  Catalyst, HTTP, JSON, Test, SafeTestsets ,PubChem
+
 # Test molar_ratio functionality
 let 
     @variables t

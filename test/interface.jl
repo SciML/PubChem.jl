@@ -1,3 +1,5 @@
+using  Catalyst, HTTP, JSON, Test, SafeTestsets ,PubChem
+
 # Tests for JSON retrieval
 
 # Test that the functions return similar values
