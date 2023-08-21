@@ -8,22 +8,22 @@ let
     b = get_compound("water")
     @test a == b
 
-    @test get_json_from_url("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/water/json") isa Dict
-    @test get_json_from_name("water") isa Dict
-    @test get_json_from_cid(962) isa Dict  
+    @test PubChem.get_json_from_url("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/water/json") isa Dict
+    @test PubChem.get_json_from_name("water") isa Dict
+    @test PubChem.get_json_from_cid(962) isa Dict  
 
-    @test get_json_from_name("water") == get_json_from_cid(962)
+    @test PubChem.get_json_from_name("water") == PubChem.get_json_from_cid(962)
 end
 
 let 
-    get_compound_properties("Water") isa Dict
-    get_compound_properties(962) isa Dict
-    @test get_compound_properties("Water") == get_compound_properties(962)
+    PubChem.get_compound_properties("Water") isa Dict
+    PubChem.get_compound_properties(962) isa Dict
+    @test PubChem.get_compound_properties("Water") == PubChem.get_compound_properties(962)
 end
 
 # Check if function correctly fetches data from the JSON
 let 
-    data = get_json_from_name("Carbon")
+    data = PubChem.get_json_from_name("Carbon")
     @test extract_properties(data) isa Dict
 
     x = Dict{Any, Any}(
