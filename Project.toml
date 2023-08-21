@@ -1,4 +1,4 @@
-name = "TestPackage"
+name = "PubChem"
 uuid = "1db272ca-bb6a-4d7c-9426-e93aef723262"
 authors = ["Lalit Chauhan"]
 version = "0.1.0"

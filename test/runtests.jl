@@ -1,32 +1,10 @@
-using TestPackage, Test
+using  Catalyst, HTTP, JSON, Test, SafeTestsets ,PubChem
 
-@testset "TestPackage.jl" begin
-    a = get_compound(962)
-    b = get_compound("water")
-    
-    @test a == b
-    @test a isa Dict
-
-    @test extract_properties(a) isa Dict
-
-end
+### Run the tests ###
+@time begin
+    @time @safetestset "JSON" begin include("interface.jl") end
+    @time @safetestset "Chemistry" begin include("functions.jl") end
+end 
 
 
-
-# # define Reaction (refer to Catalyst for the full answer)
-# struct Reaction
-#     r
-#     p
-# end
-
-# dict,array
-
-# # take an example reaction and start to balance it 
-# # http://mathgene.usc.es/matlab-profs-quimica/reacciones.pdf
-# # OH- + H+ -> H2O
-# [1,1] [1]
-# r = ["water" , "CO2"]
-# r = Dict(["water"=>1 , "CO2"=>3]
-
-# balance(reaction) = TODO
 

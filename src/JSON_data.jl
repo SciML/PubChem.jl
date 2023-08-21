@@ -19,12 +19,16 @@ end
 
 get_compound(x::Integer) = get_json_from_cid(x)
 get_compound(x::AbstractString) = get_json_from_name(x)
+get_compound(x::Symbol) = get_json_from_name(x)
 
 function extract_properties(data)
     properties = Dict()
 
     # Get the information section from the JSON
     info = data["PC_Compounds"][1]["props"]
+
+    # Extract charge information
+    charge = data["PC_Compounds"][1]["charge"]
 
     # Iterate over the 'info' array
     for item in info
@@ -41,10 +45,15 @@ function extract_properties(data)
             properties["Molecular_weight"] = parse(Float64, get(item, "value", "")["sval"])
         elseif label == "Molecular Formula"
             properties["Molecular_formula"] = get(item, "value", "")["sval"]
+        elseif label == "Mass"
+            properties["Molecular_mass"] = parse(Float64, get(item, "value", "")["sval"])        
         elseif label == "SMILES"
             properties["Smiles"] = get(item, "value", "")["sval"]
         end
     end
+
+    # Store the charge information
+    properties["Charge"] = charge
 
     # Return the properties
     return properties
@@ -60,16 +69,14 @@ end
 
 macro Attach_Metadata(variable, name)
     properties = get_compound_properties(name)
-    setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata($(variable),CompoundProperties,$properties))
+    setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata($(variable),PubChem.CompoundProperties,$properties))
     escaped_setmetadata_expr = esc(setmetadata_expr)
     return Expr(:block,escaped_setmetadata_expr)
 end
 
-
-properties(s::Num) = properties(ModelingToolkit.value(s))
-function properties(s)
-    ModelingToolkit.getmetadata(s, CompoundProperties)
+macro Attach_Metadata(variable)
+    properties = get_compound_properties(variable)
+    setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata($(variable),PubChem.CompoundProperties,$properties))
+    escaped_setmetadata_expr = esc(setmetadata_expr)
+    return Expr(:block,escaped_setmetadata_expr)
 end
-
-# @Attach_Metadata C "C"
-# properties(C)
