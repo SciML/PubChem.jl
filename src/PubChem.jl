@@ -1,4 +1,4 @@
-module TestPackage
+module PubChem
 using HTTP
 using JSON
 using Catalyst
