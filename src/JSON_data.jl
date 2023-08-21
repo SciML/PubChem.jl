@@ -69,14 +69,14 @@ end
 
 macro Attach_Metadata(variable, name)
     properties = get_compound_properties(name)
-    setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata($(variable),TestPackage.CompoundProperties,$properties))
+    setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata($(variable),PubChem.CompoundProperties,$properties))
     escaped_setmetadata_expr = esc(setmetadata_expr)
     return Expr(:block,escaped_setmetadata_expr)
 end
 
 macro Attach_Metadata(variable)
     properties = get_compound_properties(variable)
-    setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata($(variable),TestPackage.CompoundProperties,$properties))
+    setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata($(variable),PubChem.CompoundProperties,$properties))
     escaped_setmetadata_expr = esc(setmetadata_expr)
     return Expr(:block,escaped_setmetadata_expr)
 end
