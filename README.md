@@ -35,8 +35,7 @@ Dict{Any, Any} with 7 entries:
 
 You can now utilize these chemical properties to perform various calculations, such as determining the limiting reactant and calculating theoretical yields in a balanced Catalyst reaction.
 
-As an example, let's consider the reaction `2Al + 3Cl2 --> 2AlCl3`
-And suppose we have the masses of Al and Cl2 as 2.80g and 4.15g, respectively.
+As an example, let's consider the reaction `2Al + 3Cl2 --> 2AlCl3` and suppose we have the masses of Al and Cl2 as 2.80g and 4.15g, respectively.
 
 ```julia
 # Define the species involved in the reaction
@@ -55,7 +54,7 @@ rx = Reaction(1.0, [Al, Cl2], [AlCl3], [2, 3], [2])
 julia> limiting_reagent(reaction,[2.80,4.15])
 (Cl2(t), 0.05853314527503526) # Returns the limiting reagent and it's number of moles
 
-#Calculate theoretical yield given the masses of the reactants and the product for which to calculate
+# Calculate theoretical yield given the masses of the reactants and the product for which to calculate
 julia> theoretical_yield(reaction,[2.80,4.15],AlCl3)
 5.203206393982134 # 5.2g of AlCl3 is produced 
 ```
