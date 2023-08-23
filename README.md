@@ -4,5 +4,33 @@
 [![Coverage](https://codecov.io/gh/LalitChauhan56/PubChem.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/LalitChauhan56/PubChem.jl)
 
 
-This package is under development. 
-The project will involve the creation of a new package that will provide an interface to query for chemical species and enzymes using the PubChem API. This will then be integrated into the existing library Catalyst.jl to improve upon its functionalities. This will prove in Improved accuracy in identifying chemical species and enzymes in reaction networks. By accessing the vast amount of data in the PubChem database, Catalyst.jl will be able to provide more accurate identification of chemical species and enzymes in reaction networks, reducing ambiguity and improving the quality of results.
+PubChem.jl is a package used to fetch data from the PubChem database and attach it to species defined using the Catalyst.jl package.
+
+## Example
+
+Let us suppose that we want to find the chemical properties associated with the species. 
+
+We will just need the name of the species and a pre-defined species variable to attach the appropriate metadata to:
+
+```julia
+using PubChem, Catalyst
+@variables t
+@species H2O(t)
+@Attach_Metadata H2O
+```
+
+Now our species also holds the chemical data fetched from PubChem as it's metadata. We can query it using:
+
+```julia
+julia> properties(H2O)
+Dict{Any, Any} with 7 entries:
+  "IUPAC_Name_Preferred"   => "oxidane"
+  "IUPAC_Name_Traditional" => "water"
+  "Charge"                 => 0
+  "Molecular_formula"      => "H2O"
+  "Molecular_mass"         => 18.0106
+  "Molecular_weight"       => 18.015
+  "Smiles"                 => "O"
+```
+
+  
