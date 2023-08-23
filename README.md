@@ -1,4 +1,4 @@
-# PubChem
+# PubChem.jl
 
 [![CI](https://github.com/LalitChauhan56/PubChem.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/LalitChauhan56/PubChem.jl/actions/workflows/CI.yml)
 [![Coverage](https://codecov.io/gh/LalitChauhan56/PubChem.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/LalitChauhan56/PubChem.jl)
