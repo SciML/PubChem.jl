@@ -8,7 +8,7 @@ PubChem.jl is a powerful Julia package that facilitates easy access to chemical 
 
 ### Example Usage
 
-Suppose we want to retrieve chemical properties for the species "H2O". First, we define the species and attach the appropriate metadata:
+Suppose we want to retrieve chemical properties for the species `H2O`. First, we define the species and attach the appropriate metadata:
 
 ```julia
 using PubChem, Catalyst
@@ -17,7 +17,7 @@ using PubChem, Catalyst
 @Attach_Metadata H2O
 ```
 
-Now, our species "H2O" holds chemical data fetched from PubChem as its metadata. We can query this data:
+Now, our species `H2O` holds chemical data fetched from PubChem as its metadata. We can query this data:
 
 ```julia
 julia> properties(H2O)
