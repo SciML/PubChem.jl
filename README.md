@@ -51,11 +51,11 @@ As an example, let's consider the reaction `2Al + 3Cl2 --> 2AlCl3` and suppose w
 rx = Reaction(1.0, [Al, Cl2], [AlCl3], [2, 3], [2])
 
 # Get limiting reagent given the masses of the reactants
-julia> limiting_reagent(reaction,[2.80,4.15])
+julia> limiting_reagent(rx,[2.80,4.15])
 (Cl2(t), 0.05853314527503526) # Returns the limiting reagent and it's number of moles
 
 # Calculate theoretical yield given the masses of the reactants and the product for which to calculate
-julia> theoretical_yield(reaction,[2.80,4.15],AlCl3)
+julia> theoretical_yield(rx,[2.80,4.15],AlCl3)
 5.203206393982134 # 5.2g of AlCl3 is produced 
 ```
 
