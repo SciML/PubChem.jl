@@ -9,7 +9,7 @@ include("Retrieve.jl")
 
 export get_compound
 export extract_properties
-export @Attach_Metadata
+export @attach_metadata
 
 export molar_ratio, moles_by_mass , moles_by_volume
 export limiting_reagent, theoretical_yield

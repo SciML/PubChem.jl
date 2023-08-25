@@ -43,7 +43,7 @@ end
 let 
     @variables t
     @species H(t)
-    @Attach_Metadata H
+    @attach_metadata H
 
     @test properties(H) isa Dict
     @test IUPAC_Name_Preferred(H) == "molecular hydrogen"
@@ -59,10 +59,10 @@ let
     @variables t
     @species X(t)
 
-    @Attach_Metadata X "H2O"
+    @attach_metadata X "H2O"
     a = properties(X) 
 
-    @Attach_Metadata X 962
+    @attach_metadata X 962
     b = properties(X) 
 
     @test a == b

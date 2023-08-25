@@ -14,7 +14,7 @@ Suppose we want to retrieve chemical properties for the species `H2O`. First, we
 using PubChem, Catalyst
 @variables t
 @species H2O(t)
-@Attach_Metadata H2O
+@attach_metadata H2O
 ```
 
 Now, our species `H2O` holds chemical data fetched from PubChem as its metadata. We can query this data:
@@ -43,9 +43,9 @@ As an example, let's consider the reaction `2Al + 3Cl2 --> 2AlCl3` and suppose w
 @species Al(t), Cl2(t), AlCl3(t)
 
 # Attach metadata to the species
-@Attach_Metadata Al 
-@Attach_Metadata Cl2 
-@Attach_Metadata AlCl3 
+@attach_metadata Al 
+@attach_metadata Cl2 
+@attach_metadata AlCl3 
 
 # Define a balanced Catalyst reaction 
 rx = Reaction(1.0, [Al, Cl2], [AlCl3], [2, 3], [2])
@@ -58,6 +58,3 @@ julia> limiting_reagent(rx,[2.80,4.15])
 julia> theoretical_yield(rx,[2.80,4.15],AlCl3)
 5.203206393982134 # 5.2g of AlCl3 is produced 
 ```
-
-
-  

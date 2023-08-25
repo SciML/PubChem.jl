@@ -67,14 +67,14 @@ function get_compound_properties(name)
     return extract_properties(compound_data)
 end
 
-macro Attach_Metadata(variable, name)
+macro attach_metadata(variable, name)
     properties = get_compound_properties(name)
     setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata($(variable),PubChem.CompoundProperties,$properties))
     escaped_setmetadata_expr = esc(setmetadata_expr)
     return Expr(:block,escaped_setmetadata_expr)
 end
 
-macro Attach_Metadata(variable)
+macro attach_metadata(variable)
     properties = get_compound_properties(variable)
     setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata($(variable),PubChem.CompoundProperties,$properties))
     escaped_setmetadata_expr = esc(setmetadata_expr)
