@@ -1,7 +1,7 @@
 # PubChem.jl
 
-[![CI](https://github.com/LalitChauhan56/PubChem.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/LalitChauhan56/PubChem.jl/actions/workflows/CI.yml)
-[![Coverage](https://codecov.io/gh/LalitChauhan56/PubChem.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/LalitChauhan56/PubChem.jl)
+[![CI](https://github.com/SciML/PubChem.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/SciML/PubChem.jl/actions/workflows/CI.yml)
+[![codecov](https://codecov.io/gh/SciML/PubChem.jl/graph/badge.svg?token=UzwzLav3J7)](https://codecov.io/gh/SciML/PubChem.jl)
 
 
 PubChem.jl is a powerful Julia package that facilitates easy access to chemical data from the PubChem database and associates it with chemical species defined using the Catalyst.jl package. This allows you to seamlessly integrate chemical metadata into your computational workflows.
