@@ -3,8 +3,8 @@ using Documenter, PubChem, Catalyst
 
 docpath = Base.source_dir()
 assetpath = joinpath(docpath, "src", "assets")
-# cp(joinpath(docpath, "Manifest.toml"), joinpath(assetpath, "Manifest.toml"), force = true)
-# cp(joinpath(docpath, "Project.toml"), joinpath(assetpath, "Project.toml"), force = true)
+cp(joinpath(docpath, "Manifest.toml"), joinpath(assetpath, "Manifest.toml"), force = true)
+cp(joinpath(docpath, "Project.toml"), joinpath(assetpath, "Project.toml"), force = true)
 
 
 include("pages.jl")
