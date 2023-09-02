@@ -1,4 +1,3 @@
-push!(LOAD_PATH,"F:/PubChem.jl")
 using Documenter, PubChem, Catalyst
 
 docpath = Base.source_dir()
