@@ -7,7 +7,7 @@ Let us begin by attaching metadata to a species.
 ```@example ind1
 using PubChem, Catalyst
 
-# Define the species involved in the reaction and attach metadata
+# Define the species and attach metadata
 @variables t
 @species CH3COOH(t)
 @attach_metadata CH3COOH

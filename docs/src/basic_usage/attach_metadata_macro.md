@@ -45,7 +45,7 @@ using PubChem, Catalyst
 nothing # hide
 ```
 
-The chemical properties of water have now been attached to `X`.
+The chemical properties of `H2O` have now been attached to `X`.
 
 ```@example ind2
 chemical_properties(X)
@@ -61,7 +61,7 @@ using PubChem, Catalyst
 @attach_metadata Y 6506 #CID of triethyl 2-hydroxypropane-1,2,3-tricarboxylate
 nothing # hide
 ```
-The chemical properties of triethyl 2-hydroxypropane-1,2,3-tricarboxylate have now been attached to `Y`.
+The chemical properties of `triethyl 2-hydroxypropane-1,2,3-tricarboxylate` have now been attached to `Y`.
 
 ```@example ind3
 chemical_properties(Y)
