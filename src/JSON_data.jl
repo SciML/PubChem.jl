@@ -21,7 +21,7 @@ function get_json_from_cid(cid)
 end
 
 """
-    get_compound(x::AbstractString)
+    get_compound(name::AbstractString)
 
 Return a JSON file containing chemical properties of the given compound.
 """

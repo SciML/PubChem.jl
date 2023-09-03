@@ -1,5 +1,5 @@
 """
-    chemical_properties(x::Num)
+    chemical_properties(species)
 
 Return the chemical properties attached to the species.
 """
@@ -10,7 +10,7 @@ function chemical_properties(s)
 end
 
 """
-    molecular_weight(x::Num)
+    molecular_weight(species)
 
 Return the molecular weight of the species.
 """
@@ -23,7 +23,7 @@ function molecular_weight(s)
 end
 
 """
-    IUPAC_Name_Preferred(x::Num)
+    IUPAC_Name_Preferred(species)
 
 Return the preferred IUPAC name of the species.
 """
@@ -36,7 +36,7 @@ function IUPAC_Name_Preferred(s)
 end
 
 """
-IUPAC_Name_Traditional(x::Num)
+IUPAC_Name_Traditional(species)
 
 Return the traditional IUPAC name of the species.
 """
@@ -49,7 +49,7 @@ function IUPAC_Name_Traditional(s)
 end
 
 """
-    molecular_formula(x::Num)
+    molecular_formula(species)
 
 Return the molecular formula of the species.
 """
@@ -62,7 +62,7 @@ function molecular_formula(s)
 end
 
 """
-    smiles(x::Num)
+    smiles(species)
 
 Return the SMILES of the species.
 """
@@ -75,7 +75,7 @@ function smiles(s)
 end
 
 """
-    molecular_mass(x::Num)
+    molecular_mass(species)
 
 Return the molecular mass of the species.
 """
@@ -88,7 +88,7 @@ function molecular_mass(s)
 end
 
 """
-    charge(x::Num)
+    charge(species)
 
 Return the charge on the species.
 """

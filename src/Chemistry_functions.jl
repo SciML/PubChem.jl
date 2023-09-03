@@ -1,5 +1,5 @@
 """
-    molar_ratio(reaction::Reaction, Num, Num)
+    molar_ratio(reaction::Reaction, species, species)
 
 Calculate Molar ratio of two elements in a reaction.
     
@@ -24,7 +24,7 @@ function find_coefficient(reaction::Reaction, species)
 end
 
 """
-    moles_by_volume(Int64, Int64)
+    moles_by_volume(molarity::Float64, volume::Float64)
 
 Calculate number of moles given the molarity and volume.
 
@@ -42,7 +42,7 @@ function moles_by_volume(molarity, volume)
 end
 
 """
-    moles_by_mass(Num, Int64)
+    moles_by_mass(species, mass::Float64)
 
 Calculate number of moles given the compound and it's mass.
 
