@@ -20,7 +20,7 @@ makedocs(sitename = "PubChem.jl",
          pages = pages)
        
 deploydocs(;
-           repo="github.com/LalitChauhan56/PubChem.jl",
+           repo="github.com/LalitChauhan56/PubChem.jl.git",
 )
 
 
