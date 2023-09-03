@@ -1,4 +1,4 @@
-# Chemical Calculations
+# [Chemical Calculations](@id chemical_calculations)
 
 You can now utilize the chemical properties fetched in the previous tutorial to perform various calculations, such as determining the limiting reagent and calculating theoretical yields in a balanced Catalyst reaction.
 

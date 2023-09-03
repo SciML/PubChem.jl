@@ -2,9 +2,7 @@ using Documenter, PubChem, Catalyst
 
 docpath = Base.source_dir()
 assetpath = joinpath(docpath, "src", "assets")
-cp(joinpath(docpath, "Manifest.toml"), joinpath(assetpath, "Manifest.toml"), force = true)
 cp(joinpath(docpath, "Project.toml"), joinpath(assetpath, "Project.toml"), force = true)
-
 
 include("pages.jl")
 
@@ -19,6 +17,6 @@ makedocs(sitename = "PubChem.jl",
          clean = true,
          pages = pages)
        
-deploydocs(repo="github.com/LalitChauhan56/PubChem.jl.git",
-           devbranch = "documentation"
+         deploydocs(repo="github.com/LalitChauhan56/PubChem.jl.git",
+         devbranch = "documentation"
 )
