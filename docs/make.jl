@@ -21,7 +21,7 @@ makedocs(sitename = "PubChem.jl",
        
 deploydocs(;
            repo="github.com/LalitChauhan56/PubChem.jl",
-       )
+)
 
 
 
