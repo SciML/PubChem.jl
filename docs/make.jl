@@ -18,10 +18,10 @@ makedocs(sitename = "PubChem.jl",
          doctest = false,
          clean = true,
          pages = pages)
-
-deploydocs(repo = "github.com/SciML/PubChem.jl.git";
-           push_preview = true)        
-
+       
+deploydocs(;
+           repo="https://github.com/LalitChauhan56/PubChem.jl/tree/documentation",
+       )
 
 
 
