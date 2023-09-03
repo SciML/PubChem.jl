@@ -69,6 +69,7 @@ moles_by_mass(MnO2,95)
 ```
 
 We can also calculate the number of moles of a species if we are given the molarity and volume of the solution.
+
 For example, if we want to calculate the number of moles of MnO2 contained in 0.300L of 0.400 mol/L MnO2 Solution, we can do the following:
 
 ```@example ind1
