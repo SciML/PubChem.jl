@@ -20,7 +20,7 @@ using PubChem, Catalyst
 Now, our species `H2O` holds chemical data fetched from PubChem as its metadata. We can query this data:
 
 ```julia
-julia> properties(H2O)
+julia> chemical_properties(H2O)
 Dict{Any, Any} with 7 entries:
   "IUPAC_Name_Preferred"   => "oxidane"
   "IUPAC_Name_Traditional" => "water"
