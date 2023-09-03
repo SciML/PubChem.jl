@@ -28,9 +28,9 @@ We then define the relevant reaction in Catalyst.
 rx = Reaction(1.0, [Al, Cl2], [AlCl3], [2, 3], [2])
 ```
 !!! note 
-        The reaction should be stoichiometrically balanced.
+        The chemical reaction should be balanced.
 
-We can then calculate the limiting reagent given the masses of the reactants.
+We can then calculate the limiting reagent, provided we have the masses of the reactants.
 
 ```@example ind1
 limiting_reagent(rx,[2.80,4.15])  # Returns the limiting reagent and it's number of moles
@@ -38,21 +38,21 @@ limiting_reagent(rx,[2.80,4.15])  # Returns the limiting reagent and it's number
 
 ## Determining Theoretical Yield
 
-Similarly if we want to calculate the theoretical yield of `AlCl3` in the above reaction we can do the following:
+Similarly if we want to calculate the theoretical yield of `AlCl3` in the above reaction, we can do the following:
 ```@example ind1
 theoretical_yield(rx,[2.80,4.15],AlCl3) # theoretical yield in grams
 ```
 
 ## Calculating Molar Ratios in a Reaction
 
-We can calculate the molar ratios of two species involved in the reaction. If we want to calcuate the molar ratio of `Al` and `AlCl3` in the above reaction, we can do the following:
+We can calculate the molar ratios of two species involved in a reaction. If we want to calcuate the molar ratio of `Al` and `AlCl3` in the above reaction, we can do the following:
 ```@example ind1
 molar_ratio(rx,Al,AlCl3)
 ```
 
-## Calculating Number of moles
+## Calculating Number of Moles
 
-We can calculate the number of moles of a given species if we have it's mass. 
+We can calculate the number of moles of a given species if we have its mass. 
 
 For example, if we want to determine the number of moles in 95g of MnO2 we can do the following:
 
@@ -66,4 +66,11 @@ nothing #hide
 
 ```@example ind1
 moles_by_mass(MnO2,95)
+```
+
+We can also calculate the number of moles of a species if we are given the molarity and volume of the solution.
+For example, if we want to calculate the number of moles of MnO2 contained in 0.300L of 0.400 mol/L MnO2 Solution, we can do the following:
+
+```@example ind1
+moles_by_volume(0.300,0.400)
 ```

@@ -1,4 +1,4 @@
-# [Attaching Metdata](@id attach_metadata_macro)
+# [Attaching Metadata](@id attach_metadata_macro)
 
 In this tutorial we provide an introduction to using PubChem.jl to attach chemical properties as metadata to species defined using the Catalyst package.
 
@@ -34,7 +34,7 @@ The `attach_metadata` macro queries the PubChem database and attaches the approp
 chemical_properties(HCl)
 ```
 
-In some cases, we may wish to assign chemical properties to a variable with a custom name. In such cases, we can use the IUPAC name of the species. 
+In some cases, we may wish to assign chemical properties to a species with a custom name. In such cases, we can use the IUPAC name of the species. 
 
 ```@example ind2
 using PubChem, Catalyst

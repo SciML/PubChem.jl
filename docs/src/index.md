@@ -4,7 +4,7 @@ PubChem.jl is a powerful Julia package that facilitates easy access to chemical 
 
 ## Features
 - Effortlessly retrieve chemical information from the PubChem database using the PubChem REST API.
-- Determine the molar ratios, limiting reagent and theoritical yield in a chemical reaction.
+- Determine the molar ratios, limiting reagent and theoretical yield in a chemical reaction.
 - Calculate the number of moles of a compound.
 
 ## Installation

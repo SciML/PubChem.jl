@@ -14,45 +14,45 @@ using PubChem, Catalyst
 nothing #hide
 ```
 
-To get all the chemical properties attached to the species we can use:
+To get all the chemical properties attached to the species, we can use:
 
 ```@example ind1
 chemical_properties(CH3COOH)
 ```
 
-To get the molecular weight of the species we can use:
+To get the molecular weight of the species, we can use:
 
 ```@example ind1
 molecular_weight(CH3COOH)
 ```
 
-To get the molecular formula of the species we can use:
+To get the molecular formula of the species, we can use:
 
 ```@example ind1
 molecular_formula(CH3COOH)
 ```
 
-To get the molecular mass of the species we can use:
+To get the molecular mass of the species, we can use:
 ```@example ind1
 molecular_mass(CH3COOH)
 ```
 
-To get the charge on the species we can use:
+To get the charge on the species, we can use:
 ```@example ind1
 charge(CH3COOH)
 ```
 
-To get the SMILES of the species we can use:
+To get the SMILES of the species, we can use:
 ```@example ind1
 smiles(CH3COOH)
 ```
 
-To get the preferred IUPAC name the species we can use:
+To get the preferred IUPAC name of the species, we can use:
 ```@example ind1
 IUPAC_Name_Preferred(CH3COOH)
 ```
 
-To get the traditional IUPAC namethe species we can use:
+To get the traditional IUPAC name of the species, we can use:
 ```@example ind1
 IUPAC_Name_Traditional(CH3COOH)
 ```
