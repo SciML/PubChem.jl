@@ -1,6 +1,7 @@
 struct CompoundProperties end
 Symbolics.option_to_metadata_type(::Val{:properties}) = CompoundProperties
 
+# Send HTTP request to API
 function get_json_from_url(url)
     # Send HTTP GET request
     resp = HTTP.get(url)
@@ -9,18 +10,27 @@ function get_json_from_url(url)
     return JSON.parse(String(resp.body))
 end
 
+# Get JSON using the name of the compound
 function get_json_from_name(name)
     return get_json_from_url("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/$name/json")
 end
 
+# Get JSON using the CID of the compound
 function get_json_from_cid(cid)
     return get_json_from_url("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/$cid/json")
 end
+
+"""
+    get_compound(name::AbstractString)
+
+Return a JSON file containing chemical properties of the given compound.
+"""
 
 get_compound(x::Integer) = get_json_from_cid(x)
 get_compound(x::AbstractString) = get_json_from_name(x)
 get_compound(x::Symbol) = get_json_from_name(x)
 
+# Extracts chemical properties from the JSON
 function extract_properties(data)
     properties = Dict()
 
@@ -59,6 +69,7 @@ function extract_properties(data)
     return properties
 end
 
+# Returns a dictionary of chemical properties
 function get_compound_properties(name)
     # Fetch compound data
     compound_data = get_compound(name)
@@ -66,6 +77,20 @@ function get_compound_properties(name)
     # Extract and return properties
     return extract_properties(compound_data)
 end
+
+"""
+    @attach_metadata
+
+Attach chemical properties fetched from PubChem to the given speices
+
+Example:
+```julia
+@variables t
+@species H2(t)
+@attach_metadata H2
+```
+
+"""
 
 macro attach_metadata(variable, name)
     properties = get_compound_properties(name)
