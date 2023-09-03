@@ -13,14 +13,14 @@ makedocs(sitename = "PubChem.jl",
          format = Documenter.HTML(; analytics = "UA-90474609-3",
                                   prettyurls = (get(ENV, "CI", nothing) == "true"),
                                   assets = ["assets/favicon.ico"],
-                                  canonical = "https://docs.sciml.ai/PubChem/stable/"),
+                                  canonical = "https://LalitChauhan56.github.io/PubChem.jl"),
          modules = [PubChem, Catalyst],
          doctest = false,
          clean = true,
          pages = pages)
        
 deploydocs(;
-           repo="https://github.com/LalitChauhan56/PubChem.jl",
+           repo="github.com/LalitChauhan56/PubChem.jl",
        )
 
 
