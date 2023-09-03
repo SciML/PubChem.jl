@@ -19,10 +19,6 @@ makedocs(sitename = "PubChem.jl",
          clean = true,
          pages = pages)
        
-deploydocs(;
-           repo="github.com/LalitChauhan56/PubChem.jl.git",
+deploydocs(repo="github.com/LalitChauhan56/PubChem.jl.git",
+           push_preview = true
 )
-
-
-
-
