@@ -45,7 +45,7 @@ let
     @species H(t)
     @attach_metadata H
 
-    @test properties(H) isa Dict
+    @test chemical_properties(H) isa Dict
     @test IUPAC_Name_Preferred(H) == "molecular hydrogen"
     @test IUPAC_Name_Traditional(H) == "molecular hydrogen"
     @test charge(H) == 0
@@ -60,14 +60,14 @@ let
     @species X(t)
 
     @attach_metadata X "H2O"
-    a = properties(X) 
+    a = chemical_properties(X) 
 
     @attach_metadata X 962
-    b = properties(X) 
+    b = chemical_properties(X) 
 
     @test a == b
 
-    @test properties(X) isa Dict
+    @test chemical_properties(X) isa Dict
     @test IUPAC_Name_Preferred(X) == "oxidane"
     @test IUPAC_Name_Traditional(X) == "water"
     @test charge(X) == 0
