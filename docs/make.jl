@@ -20,5 +20,6 @@ makedocs(sitename = "PubChem.jl",
          pages = pages)
        
 deploydocs(repo="github.com/LalitChauhan56/PubChem.jl.git",
-           push_preview = true
+           push_preview = true,
+           devbranch = "master",
 )
