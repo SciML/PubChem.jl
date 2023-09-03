@@ -31,7 +31,7 @@ nothing # hide
 The `attach_metadata` macro queries the PubChem database and attaches the appropriate chemical properties to our species. We can now retrieve the chemical properties:
 
 ```@example ind1
-properties(HCl)
+chemical_properties(HCl)
 ```
 
 In some cases, we may wish to assign chemical properties to a variable with a custom name. In such cases, we can use the IUPAC name of the species. 
@@ -48,7 +48,7 @@ nothing # hide
 The chemical properties of water have now been attached to `X`.
 
 ```@example ind2
-properties(X)
+chemical_properties(X)
 ```
 
 Similary, we can use the CID of the species when the name of the species is complex or difficult to work with. 
@@ -58,11 +58,11 @@ using PubChem, Catalyst
 
 @variables t
 @species Y(t)
-@attach_metadata Y 977 #CID of Oxygen
+@attach_metadata Y 6506 #CID of triethyl 2-hydroxypropane-1,2,3-tricarboxylate
 nothing # hide
 ```
-The chemical properties of oxygen have now been attached to `Y`.
+The chemical properties of triethyl 2-hydroxypropane-1,2,3-tricarboxylate have now been attached to `Y`.
 
 ```@example ind3
-properties(Y)
+chemical_properties(Y)
 ```

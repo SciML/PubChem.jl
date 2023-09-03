@@ -57,7 +57,7 @@ moles_by_mass(MnO2,95)
 
 """
 
-# Calculate number of moles given the compound and it's mass
+# Calculate number of moles given the compound and it's mass.
 function moles_by_mass(compound, mass)
     weight = molecular_weight(compound)
     return mass / weight
@@ -78,7 +78,7 @@ end
 """
     theoretical_yield(reaction::Reaction, masses::Array, product::Num)
 
-Calculate the theoretical yield of the given species in the reaction given the masses of the reactants
+Calculate the theoretical yield of the given species in the reaction given the masses of the reactants.
 """
 
 function theoretical_yield(reaction::Reaction, masses::Array, product::Num)

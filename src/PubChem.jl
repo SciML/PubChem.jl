@@ -14,7 +14,7 @@ export @attach_metadata
 export molar_ratio, moles_by_mass , moles_by_volume
 export limiting_reagent, theoretical_yield
 
-export properties, molecular_weight
+export chemical_properties, molecular_weight
 export molecular_formula, molecular_mass
 export IUPAC_Name_Preferred, IUPAC_Name_Traditional
 export smiles, charge
