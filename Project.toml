@@ -10,7 +10,7 @@ JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
 
 [compat]
-Catalyst = "13"
+Catalyst = "13, 14"
 HTTP = "1.9.6"
 JSON = "0.21.4"
 JSON3 = "1.13.1"
