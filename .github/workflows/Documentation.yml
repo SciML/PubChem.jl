@@ -1,0 +1,22 @@
+name: "Documentation"
+
+on:
+  push:
+    branches:
+      - master
+    tags: '*'
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref_name != github.event.repository.default_branch || github.ref != 'refs/tags/v*' }}
+
+env:
+  GKSwstype: "100" # https://discourse.julialang.org/t/generation-of-documentation-fails-qt-qpa-xcb-could-not-connect-to-display/60988
+  JULIA_PKG_SERVER: ""
+
+jobs:
+  build-and-deploy-docs:
+    name: "Documentation"
+    uses: "SciML/.github/.github/workflows/documentation.yml@v1"
+    secrets: "inherit"
