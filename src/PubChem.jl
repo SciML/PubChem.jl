@@ -4,7 +4,6 @@ using JSON
 using Catalyst
 using SymbolicUtils: BasicSymbolic
 
-
 include("JSON_data.jl")
 include("Chemistry_functions.jl")
 include("Retrieve.jl")
@@ -13,7 +12,7 @@ export get_compound
 export extract_properties
 export @attach_metadata
 
-export molar_ratio, moles_by_mass , moles_by_volume
+export molar_ratio, moles_by_mass, moles_by_volume
 export limiting_reagent, theoretical_yield
 
 export chemical_properties, molecular_weight
