@@ -1,6 +1,5 @@
 # PubChem.jl
 
-[![CI](https://github.com/SciML/PubChem.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/SciML/PubChem.jl/actions/workflows/CI.yml)
 [![codecov](https://codecov.io/gh/SciML/PubChem.jl/graph/badge.svg?token=UzwzLav3J7)](https://codecov.io/gh/SciML/PubChem.jl)
 
 
