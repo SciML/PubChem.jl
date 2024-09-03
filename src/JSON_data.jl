@@ -3,10 +3,7 @@ Symbolics.option_to_metadata_type(::Val{:properties}) = CompoundProperties
 
 # Send HTTP request to API
 function get_json_from_url(url)
-    # Send HTTP GET request
     resp = HTTP.get(url)
-
-    # Convert HTTP response to a string and parse it as JSON
     return JSON.parse(String(resp.body))
 end
 
@@ -27,9 +24,33 @@ Return a JSON file containing chemical properties of the given compound.
 """
 function get_compound end
 
-get_compound(x::Integer) = get_json_from_cid(x)
-get_compound(x::AbstractString) = get_json_from_name(x)
-get_compound(x::Symbol) = get_json_from_name(x)
+function get_compound(x::Integer)
+    try
+        get_json_from_cid(x)
+    catch err
+        if err isa HTTP.Exceptions.StatusError && err.status == 404
+            throw(KeyError(x))
+        else
+            rethrow()
+        end
+    end
+end
+
+function get_compound(x::AbstractString)
+    try
+        get_json_from_name(x)
+    catch err
+        # unlike for integer key we can make a misformated URL, or a 404
+        if err isa HTTP.RequestError ||
+           err isa HTTP.Exceptions.StatusError && err.status == 404
+            throw(KeyError(x))
+        else
+            rethrow()
+        end
+    end
+end
+
+get_compound(x::Symbol) = get_compound(String(x))
 
 # Extracts chemical properties from the JSON
 function extract_properties(data)

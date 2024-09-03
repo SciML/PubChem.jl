@@ -79,3 +79,10 @@ let
         @test smiles(X) == "O"
     end
 end
+
+# check errors are good
+let
+    @test_throws KeyError chemical_properties("complete nonsense111")  # would give a RequestError
+    @test_throws KeyError chemical_properties("completenonsense111")  # would 404
+    @test_throws KeyError chemical_properties("-1")  # would 404
+end
