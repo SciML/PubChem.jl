@@ -1,5 +1,7 @@
 # PubChem.jl
 
+[![Latest Release (for users)](https://img.shields.io/badge/docs-latest_release_(for_users)-blue.svg)](https://sciml.github.io/PubChem.jl/stable/)
+[![Master (for developers)](https://img.shields.io/badge/docs-master_branch_(for_devs)-blue.svg)](https://sciml.github.io/PubChem.jl/dev/)
 [![codecov](https://codecov.io/gh/SciML/PubChem.jl/graph/badge.svg?token=UzwzLav3J7)](https://codecov.io/gh/SciML/PubChem.jl)
 
 
