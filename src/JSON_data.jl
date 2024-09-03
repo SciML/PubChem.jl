@@ -12,16 +12,12 @@ end
 
 # Get JSON using the name of the compound
 function get_json_from_name(name)
-    return get_json_from_url(
-        "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/$name/json",
-    )
+    return get_json_from_url("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/$name/json")
 end
 
 # Get JSON using the CID of the compound
 function get_json_from_cid(cid)
-    return get_json_from_url(
-        "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/$cid/json",
-    )
+    return get_json_from_url("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/$cid/json")
 end
 
 """
@@ -61,7 +57,7 @@ function extract_properties(data)
         elseif label == "Molecular Formula"
             properties["Molecular_formula"] = get(item, "value", "")["sval"]
         elseif label == "Mass"
-            properties["Molecular_mass"] = parse(Float64, get(item, "value", "")["sval"])
+            properties["Molecular_mass"] = parse(Float64, get(item, "value", "")["sval"])        
         elseif label == "SMILES"
             properties["Smiles"] = get(item, "value", "")["sval"]
         end
@@ -100,26 +96,14 @@ Example:
 
 macro attach_metadata(variable, name)
     properties = get_compound_properties(name)
-    setmetadata_expr = :(
-        $(variable) = ModelingToolkit.setmetadata(
-            $(variable),
-            PubChem.CompoundProperties,
-            $properties,
-        )
-    )
+    setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata($(variable),PubChem.CompoundProperties,$properties))
     escaped_setmetadata_expr = esc(setmetadata_expr)
-    return Expr(:block, escaped_setmetadata_expr)
+    return Expr(:block,escaped_setmetadata_expr)
 end
 
 macro attach_metadata(variable)
     properties = get_compound_properties(variable)
-    setmetadata_expr = :(
-        $(variable) = ModelingToolkit.setmetadata(
-            $(variable),
-            PubChem.CompoundProperties,
-            $properties,
-        )
-    )
+    setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata($(variable),PubChem.CompoundProperties,$properties))
     escaped_setmetadata_expr = esc(setmetadata_expr)
-    return Expr(:block, escaped_setmetadata_expr)
+    return Expr(:block,escaped_setmetadata_expr)
 end

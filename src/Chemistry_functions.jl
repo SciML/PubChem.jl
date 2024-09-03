@@ -38,7 +38,7 @@ moles_by_volume(0.300,0.400) == 0.120
 
 # Calculate number of moles given the molarity and volume
 function moles_by_volume(molarity, volume)
-    return molarity * volume
+    return  molarity * volume
 end
 
 """
@@ -71,11 +71,8 @@ Calculate the limiting reagent in the reaction given the masses of the reactants
 """
 
 function limiting_reagent(reaction::Reaction, masses::Array{Float64})
-    reactant_moles = [
-        masses[i] / molecular_weight(reaction.substrates[i]) for
-        i = 1:length(reaction.substrates)
-    ]
-    return reaction.substrates[argmin(reactant_moles)], minimum(reactant_moles)
+    reactant_moles = [masses[i] / molecular_weight(reaction.substrates[i]) for i in 1:length(reaction.substrates)]
+    return reaction.substrates[argmin(reactant_moles)],minimum(reactant_moles)
 end
 
 """
@@ -85,6 +82,6 @@ Calculate the theoretical yield of the given species in the reaction given the m
 """
 
 function theoretical_yield(reaction::Reaction, masses::Array, product::Num)
-    lr, m = limiting_reagent(reaction, masses)
+    lr,m = limiting_reagent(reaction,masses)
     return m * molar_ratio(reaction, product, lr) * molecular_weight(product)
 end
