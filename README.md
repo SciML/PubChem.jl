@@ -31,9 +31,44 @@ Dict{Any, Any} with 7 entries:
   "Smiles"                 => "O"
 ```
 
+You can also query the properties directly, by name by CID or by Formula, even if you are not using Catalyst.
+This fetches it from PubChem directly.
+
+```julia
+Dict{Any, Any} with 7 entries:
+  "IUPAC_Name_Preferred"   => "oxidane"
+  "IUPAC_Name_Traditional" => "water"
+  "Charge"                 => 0
+  "Molecular_formula"      => "H2O"
+  "Molecular_mass"         => 18.0106
+  "Molecular_weight"       => 18.015
+  "Smiles"                 => "O"
+
+julia> chemical_properties(962)
+Dict{Any, Any} with 7 entries:
+  "IUPAC_Name_Preferred"   => "oxidane"
+  "IUPAC_Name_Traditional" => "water"
+  "Charge"                 => 0
+  "Molecular_formula"      => "H2O"
+  "Molecular_mass"         => 18.0106
+  "Molecular_weight"       => 18.015
+  "Smiles"                 => "O"
+
+julia> chemical_properties("H2O")
+Dict{Any, Any} with 7 entries:
+  "IUPAC_Name_Preferred"   => "oxidane"
+  "IUPAC_Name_Traditional" => "water"
+  "Charge"                 => 0
+  "Molecular_formula"      => "H2O"
+  "Molecular_mass"         => 18.0106
+  "Molecular_weight"       => 18.015
+  "Smiles"                 => "O"
+```
+
+
 #### Chemical Calculations
 
-You can now utilize these chemical properties to perform various calculations, such as determining the limiting reactant and calculating theoretical yields in a balanced Catalyst reaction.
+With metadata attached to species directly, you can now utilize these chemical properties to perform various calculations, such as determining the limiting reactant and calculating theoretical yields in a balanced Catalyst reaction.
 
 As an example, let's consider the reaction `2Al + 3Cl2 --> 2AlCl3` and suppose we have the masses of `Al` and `Cl2` as 2.80g and 4.15g, respectively.
 

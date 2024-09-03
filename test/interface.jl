@@ -67,12 +67,14 @@ let
 
     @test a == b
 
-    @test chemical_properties(X) isa Dict
-    @test IUPAC_Name_Preferred(X) == "oxidane"
-    @test IUPAC_Name_Traditional(X) == "water"
-    @test charge(X) == 0
-    @test molecular_formula(X) == "H2O"
-    @test molecular_mass(X) == 18.010564683
-    @test molecular_weight(X) == 18.015
-    @test smiles(X) == "O"
+    for v in (X, "water", 962, "oxidane", "H2O")
+        @test chemical_properties(X) isa Dict
+        @test IUPAC_Name_Preferred(X) == "oxidane"
+        @test IUPAC_Name_Traditional(X) == "water"
+        @test charge(X) == 0
+        @test molecular_formula(X) == "H2O"
+        @test molecular_mass(X) == 18.010564683
+        @test molecular_weight(X) == 18.015
+        @test smiles(X) == "O"
+    end
 end
