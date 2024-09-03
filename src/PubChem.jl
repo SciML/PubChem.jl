@@ -2,6 +2,8 @@ module PubChem
 using HTTP
 using JSON
 using Catalyst
+using SymbolicUtils: BasicSymbolic
+
 
 include("JSON_data.jl")
 include("Chemistry_functions.jl")

@@ -21,10 +21,11 @@ function get_json_from_cid(cid)
 end
 
 """
-    get_compound(name::AbstractString)
+    get_compound(name::AbstractString | cid::Integer)
 
 Return a JSON file containing chemical properties of the given compound.
 """
+function get_compound end
 
 get_compound(x::Integer) = get_json_from_cid(x)
 get_compound(x::AbstractString) = get_json_from_name(x)
@@ -69,12 +70,13 @@ function extract_properties(data)
     return properties
 end
 
-# Returns a dictionary of chemical properties
-function get_compound_properties(name)
-    # Fetch compound data
-    compound_data = get_compound(name)
+"""
+    get_compound_properties(name::AbstractString | cid::Integer)
 
-    # Extract and return properties
+    # Returns a dictionary of chemical properties of the given compound.
+"""
+function get_compound_properties(name)
+    compound_data = get_compound(name)
     return extract_properties(compound_data)
 end
 
