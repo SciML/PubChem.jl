@@ -10,8 +10,7 @@ chemical_properties(s::Num) = chemical_properties(ModelingToolkit.value(s))
 function chemical_properties(s::BasicSymbolic)
     ModelingToolkit.getmetadata(s, CompoundProperties)
 end
-chemical_properties(x::Union{AbstractString,Integer}) = get_compound_properties(x)
-
+chemical_properties(x::Union{AbstractString, Integer}) = get_compound_properties(x)
 
 """
     molecular_weight(species)
