@@ -13,7 +13,7 @@ export get_compound
 export extract_properties
 export @attach_metadata
 
-export molar_ratio, moles_by_mass , moles_by_volume
+export molar_ratio, moles_by_mass, moles_by_volume
 export limiting_reagent, theoretical_yield
 
 export chemical_properties, molecular_weight
