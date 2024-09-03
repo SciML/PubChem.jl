@@ -35,6 +35,7 @@ You can also query the properties directly, by name by CID or by Formula, even i
 This fetches it from PubChem directly.
 
 ```julia
+julia> chemical_properties("oxidane")
 Dict{Any, Any} with 7 entries:
   "IUPAC_Name_Preferred"   => "oxidane"
   "IUPAC_Name_Traditional" => "water"
