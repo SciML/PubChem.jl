@@ -3,7 +3,7 @@ Symbolics.option_to_metadata_type(::Val{:properties}) = CompoundProperties
 
 # Send HTTP request to API
 function get_json_from_url(url)
-    resp = HTTP.get(url)   
+    resp = HTTP.get(url)
     return JSON.parse(String(resp.body))
 end
 
@@ -28,7 +28,7 @@ function get_compound(x::Integer)
     try
         get_json_from_cid(x)
     catch err
-        if err isa HTTP.Exceptions.StatusError && err.status==404
+        if err isa HTTP.Exceptions.StatusError && err.status == 404
             throw(KeyError(x))
         else
             rethrow()
@@ -41,7 +41,8 @@ function get_compound(x::AbstractString)
         get_json_from_name(x)
     catch err
         # unlike for integer key we can make a misformated URL, or a 404
-        if err isa HTTP.RequestError || err isa HTTP.Exceptions.StatusError && err.status==404
+        if err isa HTTP.RequestError ||
+           err isa HTTP.Exceptions.StatusError && err.status == 404
             throw(KeyError(x))
         else
             rethrow()
