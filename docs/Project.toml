@@ -4,5 +4,5 @@ Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 PubChem = "1db272ca-bb6a-4d7c-9426-e93aef723262"
 
 [compat]
-Catalyst = "13"
+Catalyst = "13, 14"
 Documenter = "0.27"
