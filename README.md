@@ -95,3 +95,6 @@ julia> limiting_reagent(rx,[2.80,4.15])
 julia> theoretical_yield(rx,[2.80,4.15],AlCl3)
 5.203206393982134 # 5.2g of AlCl3 is produced 
 ```
+
+## See also
+ - [PubChemCrawler.jl](https://github.com/JuliaHealth/PubChemCrawler.jl) a similar package without the Catalyst.jl integration, but with more comprehensive PubChem querying.
