@@ -2,7 +2,6 @@
     molar_ratio(reaction::Reaction, species, species)
 
 Calculate Molar ratio of two elements in a reaction.
-    
 """
 function molar_ratio(reaction::Reaction, species1, species2)
     coeff1 = find_coefficient(reaction, species1)

@@ -34,7 +34,7 @@ The `attach_metadata` macro queries the PubChem database and attaches the approp
 chemical_properties(HCl)
 ```
 
-In some cases, we may wish to assign chemical properties to a species with a custom name. In such cases, we can use the IUPAC name of the species. 
+In some cases, we may wish to assign chemical properties to a species with a custom name. In such cases, we can use the IUPAC name of the species.
 
 ```@example ind2
 using PubChem, Catalyst
@@ -51,7 +51,7 @@ The chemical properties of `H2O` have now been attached to `X`.
 chemical_properties(X)
 ```
 
-Similary, we can use the CID of the species when the name of the species is complex or difficult to work with. 
+Similary, we can use the CID of the species when the name of the species is complex or difficult to work with.
 
 ```@example ind3
 using PubChem, Catalyst
@@ -61,6 +61,7 @@ using PubChem, Catalyst
 @attach_metadata Y 6506 #CID of triethyl 2-hydroxypropane-1,2,3-tricarboxylate
 nothing # hide
 ```
+
 The chemical properties of `triethyl 2-hydroxypropane-1,2,3-tricarboxylate` have now been attached to `Y`.
 
 ```@example ind3
