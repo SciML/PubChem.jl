@@ -63,13 +63,13 @@ function moles_by_mass(compound, mass)
 end
 
 """
-    limiting_reagent(reaction::Reaction, masses::Array{Float64})
+    limiting_reagent(reaction::Reaction, masses::AbstractVector)
 
 Calculate the limiting reagent in the reaction given the masses of the reactants.
 
 """
 
-function limiting_reagent(reaction::Reaction, masses::Array{Float64})
+function limiting_reagent(reaction::Reaction, masses::AbstractVector)
     substrates = reaction.substrates
     n = length(substrates)
     @inbounds begin
@@ -87,12 +87,12 @@ function limiting_reagent(reaction::Reaction, masses::Array{Float64})
 end
 
 """
-    theoretical_yield(reaction::Reaction, masses::Array, product::Num)
+    theoretical_yield(reaction::Reaction, masses::AbstractVector, product::Num)
 
 Calculate the theoretical yield of the given species in the reaction given the masses of the reactants.
 """
 
-function theoretical_yield(reaction::Reaction, masses::Array, product::Num)
+function theoretical_yield(reaction::Reaction, masses::AbstractVector, product::Num)
     lr, m = limiting_reagent(reaction, masses)
     return m * molar_ratio(reaction, product, lr) * molecular_weight(product)
 end
