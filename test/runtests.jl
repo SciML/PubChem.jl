@@ -11,6 +11,9 @@ const GROUP = get(ENV, "GROUP", "all")
         @time @safetestset "Chemistry" begin
             include("functions.jl")
         end
+        @time @safetestset "Type Genericity" begin
+            include("interface_tests.jl")
+        end
     end
 
     if GROUP == "all" || GROUP == "nopre"
