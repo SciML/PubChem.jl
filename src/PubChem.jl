@@ -1,7 +1,9 @@
 module PubChem
-using HTTP
-using JSON
-using Catalyst
+using HTTP: HTTP
+using JSON: JSON
+using Catalyst: Catalyst, Reaction
+using ModelingToolkit: ModelingToolkit
+using Symbolics: Symbolics, Num
 using SymbolicUtils: BasicSymbolic
 
 include("JSON_data.jl")
