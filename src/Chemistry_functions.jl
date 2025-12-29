@@ -70,9 +70,20 @@ Calculate the limiting reagent in the reaction given the masses of the reactants
 """
 
 function limiting_reagent(reaction::Reaction, masses::Array{Float64})
-    reactant_moles = [masses[i] / molecular_weight(reaction.substrates[i])
-                      for i in 1:length(reaction.substrates)]
-    return reaction.substrates[argmin(reactant_moles)], minimum(reactant_moles)
+    substrates = reaction.substrates
+    n = length(substrates)
+    @inbounds begin
+        min_moles = masses[1] / molecular_weight(substrates[1])
+        min_idx = 1
+        for i in 2:n
+            moles = masses[i] / molecular_weight(substrates[i])
+            if moles < min_moles
+                min_moles = moles
+                min_idx = i
+            end
+        end
+        return substrates[min_idx], min_moles
+    end
 end
 
 """

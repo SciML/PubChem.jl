@@ -1,7 +1,7 @@
 name = "PubChem"
 uuid = "1db272ca-bb6a-4d7c-9426-e93aef723262"
-authors = ["Lalit Chauhan"]
 version = "1.0.0"
+authors = ["Lalit Chauhan"]
 
 [deps]
 Catalyst = "479239e8-5488-4da2-87a7-35f2df7eef83"
@@ -10,6 +10,7 @@ JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 SymbolicUtils = "d1185830-fcd6-423d-90d6-eec64667417b"
 
 [compat]
+AllocCheck = "0.2"
 Catalyst = "13, 14"
 HTTP = "1.9.6"
 JSON = "0.21.4"
@@ -17,8 +18,9 @@ SymbolicUtils = "1.7.1, 2, 3"
 julia = "1.9"
 
 [extras]
+AllocCheck = "9b6a8646-10ed-4001-bbdc-1d2f46dfbb1a"
 SafeTestsets = "1bc83da4-3b8d-516f-aca4-4fe02f6d838f"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["Test", "SafeTestsets"]
+test = ["Test", "SafeTestsets", "AllocCheck"]
