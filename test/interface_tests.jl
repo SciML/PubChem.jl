@@ -1,6 +1,8 @@
 using Test
 using Catalyst
 using PubChem
+using ArrayInterface
+using JLArrays
 
 @testset "Type Genericity" begin
     @variables t
@@ -64,5 +66,24 @@ using PubChem
         result = moles_by_mass(MnO2, BigFloat("95"))
         @test result isa BigFloat
         @test isapprox(Float64(result), 1.0927453213246374; rtol=1e-10)
+    end
+
+    @testset "ArrayInterface compatibility" begin
+        # Verify ArrayInterface functions work with standard arrays
+        masses = [2.80, 4.15]
+        @test ArrayInterface.can_setindex(masses) == true
+        @test ArrayInterface.fast_scalar_indexing(masses) == true
+
+        # Verify JLArrays are detected as not supporting fast scalar indexing
+        # This is expected behavior - PubChem uses scalar indexing for chemistry
+        # calculations which typically involve very small arrays (2-5 elements)
+        masses_jl = JLArray([2.80, 4.15])
+        @test ArrayInterface.can_setindex(masses_jl) == true
+        @test ArrayInterface.fast_scalar_indexing(masses_jl) == false
+
+        # Document that GPU arrays will throw an error due to scalar indexing
+        # This is intentional - GPU arrays are not a practical use case for
+        # stoichiometry calculations on small (2-5 element) arrays
+        @test_throws ErrorException limiting_reagent(reaction, masses_jl)
     end
 end
