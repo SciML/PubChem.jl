@@ -51,7 +51,7 @@ The chemical properties of `H2O` have now been attached to `X`.
 chemical_properties(X)
 ```
 
-Similary, we can use the CID of the species when the name of the species is complex or difficult to work with.
+Similarly, we can use the CID of the species when the name of the species is complex or difficult to work with.
 
 ```@example ind3
 using PubChem, Catalyst

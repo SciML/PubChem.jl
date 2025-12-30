@@ -31,7 +31,7 @@ Dict{Any, Any} with 7 entries:
   "Smiles"                 => "O"
 ```
 
-You can also query the properties directly, by name by CID or by Formula, even if you are not using Catalyst.
+You can also query the properties directly, by name, by CID, or by formula, even if you are not using Catalyst.
 This fetches it from PubChem directly.
 
 ```julia
@@ -73,24 +73,23 @@ With metadata attached to species directly, you can now utilize these chemical p
 As an example, let's consider the reaction `2Al + 3Cl2 --> 2AlCl3` and suppose we have the masses of `Al` and `Cl2` as 2.80g and 4.15g, respectively.
 
 ```julia
-julia> limiting_reagent(rx, [2.80, 4.15])
 @variables t
 @species Al(t), Cl2(t), AlCl3(t)
 
 # Attach metadata to the species
-@attach_metadata Al 
-@attach_metadata Cl2 
-@attach_metadata AlCl3 
+@attach_metadata Al
+@attach_metadata Cl2
+@attach_metadata AlCl3
 
-# Define a balanced Catalyst reaction 
+# Define a balanced Catalyst reaction
 rx = Reaction(1.0, [Al, Cl2], [AlCl3], [2, 3], [2])
 
 # Get limiting reagent given the masses of the reactants
-
-julia> theoretical_yield(rx, [2.80, 4.15], AlCl3)
-(Cl2(t), 0.05853314527503526) # Returns the limiting reagent and it's number of moles
+julia> limiting_reagent(rx, [2.80, 4.15])
+(Cl2(t), 0.05853314527503526) # Returns the limiting reagent and its number of moles
 
 # Calculate theoretical yield given the masses of the reactants and the product for which to calculate
+julia> theoretical_yield(rx, [2.80, 4.15], AlCl3)
 ```
 
 ## See also
