@@ -1,6 +1,7 @@
 using Test
 using Catalyst
 using PubChem
+using JLArrays
 
 @testset "Type Genericity" begin
     @variables t
@@ -64,5 +65,26 @@ using PubChem
         result = moles_by_mass(MnO2, BigFloat("95"))
         @test result isa BigFloat
         @test isapprox(Float64(result), 1.0927453213246374; rtol=1e-10)
+    end
+
+    @testset "JLArray (GPU-like) error handling" begin
+        # JLArrays simulate GPU arrays that don't support fast scalar indexing
+        # The limiting_reagent function requires scalar iteration to find the minimum
+        # and should throw a clear error message for GPU arrays
+        masses_jl = JLArray([2.80, 4.15])
+
+        @test_throws ArgumentError limiting_reagent(reaction, masses_jl)
+
+        # Verify the error message is helpful
+        try
+            limiting_reagent(reaction, masses_jl)
+        catch e
+            @test e isa ArgumentError
+            @test occursin("fast scalar indexing", e.msg)
+            @test occursin("GPU arrays", e.msg)
+        end
+
+        # theoretical_yield uses limiting_reagent internally, so it should also error
+        @test_throws ArgumentError theoretical_yield(reaction, masses_jl, AlCl3)
     end
 end
