@@ -2,8 +2,8 @@
     chemical_properties(species)
 
 Return the chemical properties for a species.
-If the species is given as a symbolic variable from Catalyst, this checks the metadata, attached to the species.
-If it is given as string then PubChem is queries by name, if it is given as an integer then pubchem is queried by CID.
+If the species is given as a symbolic variable from Catalyst, this checks the metadata attached to the species.
+If it is given as a string, then PubChem is queried by name; if it is given as an integer, then PubChem is queried by CID.
 """
 
 chemical_properties(s::Num) = chemical_properties(ModelingToolkit.value(s))

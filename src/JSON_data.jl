@@ -104,7 +104,7 @@ end
 """
     @attach_metadata
 
-Attach chemical properties fetched from PubChem to the given speices
+Attach chemical properties fetched from PubChem to the given species.
 
 Example:
 ```julia

@@ -67,7 +67,7 @@ IUPAC_Name_Traditional(CH3COOH)
 
 ## Querying Directly
 
-All of the above methods work with named, CIDs, or formula as well.
+All of the above methods work with names, CIDs, or formulas as well.
 
 ```@example direct_query
 using PubChem

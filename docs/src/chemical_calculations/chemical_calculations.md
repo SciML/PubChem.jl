@@ -35,7 +35,7 @@ The chemical reaction should be balanced.
 We can then calculate the limiting reagent, provided we have the masses of the reactants.
 
 ```@example ind1
-limiting_reagent(rx, [2.80, 4.15])  # Returns the limiting reagent and it's number of moles
+limiting_reagent(rx, [2.80, 4.15])  # Returns the limiting reagent and its number of moles
 ```
 
 ## Determining Theoretical Yield
@@ -48,7 +48,7 @@ theoretical_yield(rx, [2.80, 4.15], AlCl3) # theoretical yield in grams
 
 ## Calculating Molar Ratios in a Reaction
 
-We can calculate the molar ratios of two species involved in a reaction. If we want to calcuate the molar ratio of `Al` and `AlCl3` in the above reaction, we can do the following:
+We can calculate the molar ratios of two species involved in a reaction. If we want to calculate the molar ratio of `Al` and `AlCl3` in the above reaction, we can do the following:
 
 ```@example ind1
 molar_ratio(rx, Al, AlCl3)
