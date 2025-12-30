@@ -5,6 +5,7 @@ using Catalyst: Catalyst, Reaction
 using ModelingToolkit: ModelingToolkit
 using Symbolics: Symbolics, Num
 using SymbolicUtils: BasicSymbolic
+using ArrayInterface: ArrayInterface
 
 include("JSON_data.jl")
 include("Chemistry_functions.jl")

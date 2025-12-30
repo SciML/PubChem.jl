@@ -67,9 +67,16 @@ end
 
 Calculate the limiting reagent in the reaction given the masses of the reactants.
 
+Note: This function requires arrays with fast scalar indexing. GPU arrays (e.g., CuArray)
+are not supported due to the iterative nature of the algorithm.
 """
 
 function limiting_reagent(reaction::Reaction, masses::AbstractVector)
+    if !ArrayInterface.fast_scalar_indexing(masses)
+        throw(ArgumentError("limiting_reagent requires arrays with fast scalar indexing. " *
+                            "GPU arrays are not supported for this operation. " *
+                            "Use `Array(masses)` to convert to a CPU array first."))
+    end
     substrates = reaction.substrates
     n = length(substrates)
     @inbounds begin
