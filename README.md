@@ -95,3 +95,4 @@ julia> theoretical_yield(rx, [2.80, 4.15], AlCl3)
 ## See also
 
   - [PubChemCrawler.jl](https://github.com/JuliaHealth/PubChemCrawler.jl) a similar package without the Catalyst.jl integration, but with more comprehensive PubChem querying.
+
