@@ -27,9 +27,13 @@ jobs:
           - windows-latest
         arch:
           - x64
+        group:
+          - core
+          - nopre
     uses: "SciML/.github/.github/workflows/tests.yml@v1"
     with:
       julia-version: "${{ matrix.version }}"
       julia-arch: "${{ matrix.arch }}"
       os: "${{ matrix.os }}"
+      group: "${{ matrix.group }}"
     secrets: "inherit"
