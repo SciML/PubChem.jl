@@ -30,7 +30,7 @@ rx = Reaction(1.0, [Al, Cl2], [AlCl3], [2, 3], [2])
 ```
 
 !!! note
-The chemical reaction should be balanced.
+    The chemical reaction should be balanced.
 
 We can then calculate the limiting reagent, provided we have the masses of the reactants.
 
@@ -74,8 +74,8 @@ moles_by_mass(MnO2, 95)
 
 We can also calculate the number of moles of a species if we are given the molarity and volume of the solution.
 
-For example, if we want to calculate the number of moles of MnO2 contained in 0.300L of 0.400 mol/L MnO2 Solution, we can do the following:
+For example, if we want to calculate the number of moles of MnO2 contained in 0.300 L of 0.400 mol/L MnO2 solution, we can do the following:
 
 ```@example ind1
-moles_by_volume(0.300, 0.400)
+moles_by_volume(0.400, 0.300)
 ```

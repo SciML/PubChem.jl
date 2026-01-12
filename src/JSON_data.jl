@@ -94,7 +94,7 @@ end
 """
     get_compound_properties(name::AbstractString | cid::Integer)
 
-    # Returns a dictionary of chemical properties of the given compound.
+Returns a dictionary of chemical properties of the given compound.
 """
 function get_compound_properties(name)
     compound_data = get_compound(name)
