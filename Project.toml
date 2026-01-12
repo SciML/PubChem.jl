@@ -1,6 +1,6 @@
 name = "PubChem"
 uuid = "1db272ca-bb6a-4d7c-9426-e93aef723262"
-version = "1.1.0"
+version = "1.2.0"
 authors = ["Lalit Chauhan"]
 
 [deps]
@@ -22,7 +22,7 @@ JSON = "0.21.4"
 ModelingToolkit = "9"
 SymbolicUtils = "1.7.1, 2, 3"
 Symbolics = "6"
-julia = "1.9"
+julia = "1.10"
 
 [extras]
 ExplicitImports = "7d51a73a-1435-4ff3-83d9-f097790105c7"
