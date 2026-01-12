@@ -13,7 +13,6 @@ SymbolicUtils = "d1185830-fcd6-423d-90d6-eec64667417b"
 Symbolics = "0c5d862f-8b57-4792-8d23-62f2024744c7"
 
 [compat]
-AllocCheck = "0.2"
 ArrayInterface = "7"
 Catalyst = "13, 14"
 ExplicitImports = "1"
@@ -26,11 +25,10 @@ Symbolics = "6"
 julia = "1.9"
 
 [extras]
-AllocCheck = "9b6a8646-10ed-4001-bbdc-1d2f46dfbb1a"
 ExplicitImports = "7d51a73a-1435-4ff3-83d9-f097790105c7"
 JLArrays = "27aeb0d3-9eb9-45fb-866b-73c2ecf80fcb"
 SafeTestsets = "1bc83da4-3b8d-516f-aca4-4fe02f6d838f"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["Test", "SafeTestsets", "AllocCheck", "ExplicitImports", "JLArrays"]
+test = ["Test", "SafeTestsets", "ExplicitImports", "JLArrays"]
