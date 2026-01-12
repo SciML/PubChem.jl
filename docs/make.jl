@@ -10,14 +10,13 @@ makedocs(
     sitename = "PubChem.jl",
     authors = "Samuel Isaacson",
     format = Documenter.HTML(;
-        analytics = "UA-90474609-3",
         prettyurls = (get(ENV, "CI", nothing) == "true"),
         assets = ["assets/favicon.ico"],
         canonical = "https://docs.sciml.ai/PubChem/stable/"
     ),
     modules = [PubChem, Catalyst],
     doctest = false,
-    clean = true,
+    warnonly = [:missing_docs, :cross_references],
     pages = pages
 )
 
