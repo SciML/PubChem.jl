@@ -90,6 +90,7 @@ julia> limiting_reagent(rx, [2.80, 4.15])
 
 # Calculate theoretical yield given the masses of the reactants and the product for which to calculate
 julia> theoretical_yield(rx, [2.80, 4.15], AlCl3)
+5.203206393982134
 ```
 
 ## See also
