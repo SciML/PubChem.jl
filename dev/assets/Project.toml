@@ -5,5 +5,5 @@ PubChem = "1db272ca-bb6a-4d7c-9426-e93aef723262"
 
 [compat]
 Catalyst = "13, 14"
-Documenter = "0.27"
+Documenter = "1"
 PubChem = "1"
