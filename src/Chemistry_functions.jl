@@ -73,9 +73,13 @@ are not supported due to the iterative nature of the algorithm.
 
 function limiting_reagent(reaction::Reaction, masses::AbstractVector)
     if !ArrayInterface.fast_scalar_indexing(masses)
-        throw(ArgumentError("limiting_reagent requires arrays with fast scalar indexing. " *
-                            "GPU arrays are not supported for this operation. " *
-                            "Use `Array(masses)` to convert to a CPU array first."))
+        throw(
+            ArgumentError(
+                "limiting_reagent requires arrays with fast scalar indexing. " *
+                    "GPU arrays are not supported for this operation. " *
+                    "Use `Array(masses)` to convert to a CPU array first."
+            )
+        )
     end
     substrates = reaction.substrates
     n = length(substrates)

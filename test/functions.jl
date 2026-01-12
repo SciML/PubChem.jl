@@ -27,7 +27,7 @@ let
     @test moles_by_mass(MnO2, 95) == 1.0927453213246374
 
     #Given 0.300 L of 0.400 mol/L of NaCl solution
-    @test moles_by_volume(0.300, 0.400) == 0.120
+    @test moles_by_volume(0.3, 0.4) == 0.12
 end
 
 # Test functionality to calculate the limiting reagent and theoretical yield
@@ -43,7 +43,7 @@ let
     reaction = Reaction(1.0, [Al, Cl2], [AlCl3], [2, 3], [2])
 
     #Get limiting reagent given the masses of the reactants
-    @test limiting_reagent(reaction, [2.80, 4.15]) == (Cl2, 0.05853314527503526)
+    @test limiting_reagent(reaction, [2.8, 4.15]) == (Cl2, 0.05853314527503526)
 end
 
 let
@@ -57,5 +57,5 @@ let
     reaction = Reaction(1.0, [Al, Cl2], [AlCl3], [2, 3], [2])
 
     #Calculate theoretical yield given the masses of the reactants and the product for which to calculate
-    @test theoretical_yield(reaction, [2.80, 4.15], AlCl3) == 5.203206393982134
+    @test theoretical_yield(reaction, [2.8, 4.15], AlCl3) == 5.203206393982134
 end

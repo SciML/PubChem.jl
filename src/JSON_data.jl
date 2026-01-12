@@ -25,7 +25,7 @@ Return a JSON file containing chemical properties of the given compound.
 function get_compound end
 
 function get_compound(x::Integer)
-    try
+    return try
         get_json_from_cid(x)
     catch err
         if err isa HTTP.Exceptions.StatusError && err.status == 404
@@ -37,12 +37,12 @@ function get_compound(x::Integer)
 end
 
 function get_compound(x::AbstractString)
-    try
+    return try
         get_json_from_name(x)
     catch err
         # unlike for integer key we can make a misformated URL, or a 404
         if err isa HTTP.RequestError ||
-           err isa HTTP.Exceptions.StatusError && err.status == 404
+                err isa HTTP.Exceptions.StatusError && err.status == 404
             throw(KeyError(x))
         else
             rethrow()
@@ -117,16 +117,22 @@ Example:
 
 macro attach_metadata(variable, name)
     properties = get_compound_properties(name)
-    setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata(
-        $(variable), PubChem.CompoundProperties, $properties))
+    setmetadata_expr = :(
+        $(variable) = ModelingToolkit.setmetadata(
+            $(variable), PubChem.CompoundProperties, $properties
+        )
+    )
     escaped_setmetadata_expr = esc(setmetadata_expr)
     return Expr(:block, escaped_setmetadata_expr)
 end
 
 macro attach_metadata(variable)
     properties = get_compound_properties(variable)
-    setmetadata_expr = :($(variable) = ModelingToolkit.setmetadata(
-        $(variable), PubChem.CompoundProperties, $properties))
+    setmetadata_expr = :(
+        $(variable) = ModelingToolkit.setmetadata(
+            $(variable), PubChem.CompoundProperties, $properties
+        )
+    )
     escaped_setmetadata_expr = esc(setmetadata_expr)
     return Expr(:block, escaped_setmetadata_expr)
 end
