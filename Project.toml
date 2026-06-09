@@ -20,8 +20,10 @@ HTTP = "1.9.6, 2.1"
 JLArrays = "0.3"
 JSON = "0.21.4, 1.6"
 ModelingToolkit = "9, 11.26"
+SafeTestsets = "0.1"
 SymbolicUtils = "1.7.1, 2, 3, 4.34"
 Symbolics = "6, 7.26"
+Test = "1"
 julia = "1.10"
 
 [extras]
