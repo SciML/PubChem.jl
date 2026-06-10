@@ -13,10 +13,12 @@ SymbolicUtils = "d1185830-fcd6-423d-90d6-eec64667417b"
 Symbolics = "0c5d862f-8b57-4792-8d23-62f2024744c7"
 
 [compat]
+Aqua = "0.8"
 ArrayInterface = "7"
 Catalyst = "13, 14, 16.2"
 ExplicitImports = "1"
 HTTP = "1.9.6, 2.1"
+JET = "0.9, 0.10, 0.11"
 JLArrays = "0.3"
 JSON = "0.21.4, 1.6"
 ModelingToolkit = "9, 11.26"
@@ -27,10 +29,12 @@ Test = "1"
 julia = "1.10"
 
 [extras]
+Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
 ExplicitImports = "7d51a73a-1435-4ff3-83d9-f097790105c7"
+JET = "c3a54625-cd67-489e-a8e7-0a5a0ff4e31b"
 JLArrays = "27aeb0d3-9eb9-45fb-866b-73c2ecf80fcb"
 SafeTestsets = "1bc83da4-3b8d-516f-aca4-4fe02f6d838f"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["Test", "SafeTestsets", "ExplicitImports", "JLArrays"]
+test = ["Test", "SafeTestsets", "ExplicitImports", "JLArrays", "Aqua", "JET"]
