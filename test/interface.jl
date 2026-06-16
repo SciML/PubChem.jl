@@ -9,9 +9,9 @@ let
     @test a == b
 
     @test PubChem.get_json_from_url("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/water/json") isa
-        Dict
-    @test PubChem.get_json_from_name("water") isa Dict
-    @test PubChem.get_json_from_cid(962) isa Dict
+        AbstractDict
+    @test PubChem.get_json_from_name("water") isa AbstractDict
+    @test PubChem.get_json_from_cid(962) isa AbstractDict
 
     @test PubChem.get_json_from_name("water") == PubChem.get_json_from_cid(962)
 end
