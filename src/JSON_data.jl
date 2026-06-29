@@ -1,9 +1,10 @@
 struct CompoundProperties end
 Symbolics.option_to_metadata_type(::Val{:properties}) = CompoundProperties
 
-# Send HTTP request to API
+# Send HTTP request to API. HTTP adds its GET-request method to `Base.get`,
+# so we call through the owning module (`Base.get`) rather than `HTTP.get`.
 function get_json_from_url(url)
-    resp = HTTP.get(url)
+    resp = Base.get(url)
     return JSON.parse(String(resp.body))
 end
 

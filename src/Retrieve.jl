@@ -6,7 +6,7 @@ If the species is given as a symbolic variable from Catalyst, this checks the me
 If it is given as a string, then PubChem is queried by name; if it is given as an integer, then PubChem is queried by CID.
 """
 
-chemical_properties(s::Num) = chemical_properties(ModelingToolkit.value(s))
+chemical_properties(s::Num) = chemical_properties(Symbolics.value(s))
 function chemical_properties(s::BasicSymbolic)
     return ModelingToolkit.getmetadata(s, CompoundProperties)
 end
@@ -90,7 +90,7 @@ end
 Return the charge on the species.
 """
 
-charge(s::Num) = charge(ModelingToolkit.value(s))
+charge(s::Num) = charge(Symbolics.value(s))
 function charge(s)
     return get(chemical_properties(s), "Charge") do
         error("Charge not found in properties")
