@@ -5,4 +5,5 @@ pages = Any[
         "basic_usage/querying_data.md",
     ],
     "Chemical Calculations" => Any["chemical_calculations/chemical_calculations.md"],
+    "API" => "api.md",
 ]

@@ -51,7 +51,16 @@ end
 
 get_compound(x::Symbol) = get_compound(String(x))
 
-# Extracts chemical properties from the JSON
+"""
+    extract_properties(data)
+
+Extract PubChem compound properties from the JSON object returned by
+[`get_compound`](@ref).
+
+The returned dictionary contains the preferred and traditional IUPAC names, molecular
+weight, molecular formula, molecular mass, SMILES string, and charge when those fields
+are present in the PubChem payload.
+"""
 function extract_properties(data)
     properties = Dict()
 
@@ -111,9 +120,7 @@ Example:
 @species H2(t)
 @attach_metadata H2
 ```
-
 """
-
 macro attach_metadata(variable, name)
     properties = get_compound_properties(name)
     return quote
