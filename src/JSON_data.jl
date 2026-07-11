@@ -1,9 +1,23 @@
 struct CompoundProperties end
 Symbolics.option_to_metadata_type(::Val{:properties}) = CompoundProperties
 
-function get_json_from_url(url)
-    resp = HTTP.get(url)
-    return JSON.parse(String(resp.body))
+function get_json_from_url(url; retries = 5, retry_delay = 1)
+    for attempt in 1:(retries + 1)
+        try
+            buffer = IOBuffer()
+            Downloads.download(url, buffer)
+            return JSON.parse(String(take!(buffer)))
+        catch err
+            if err isa Downloads.RequestError &&
+                    err.response.status >= 500 &&
+                    attempt <= retries
+                sleep(retry_delay)
+            else
+                rethrow()
+            end
+        end
+    end
+    return
 end
 
 # Get JSON using the name of the compound
@@ -27,7 +41,7 @@ function get_compound(x::Integer)
     return try
         get_json_from_cid(x)
     catch err
-        if err isa HTTP.Exceptions.StatusError && err.status == 404
+        if err isa Downloads.RequestError && err.response.status == 404
             throw(KeyError(x))
         else
             rethrow()
@@ -40,8 +54,7 @@ function get_compound(x::AbstractString)
         get_json_from_name(x)
     catch err
         # unlike for integer key we can make a misformated URL, or a 404
-        if err isa HTTP.RequestError ||
-                err isa HTTP.Exceptions.StatusError && err.status == 404
+        if err isa Downloads.RequestError && err.response.status == 404
             throw(KeyError(x))
         else
             rethrow()
@@ -51,7 +64,16 @@ end
 
 get_compound(x::Symbol) = get_compound(String(x))
 
-# Extracts chemical properties from the JSON
+"""
+    extract_properties(data)
+
+Extract PubChem compound properties from the JSON object returned by
+[`get_compound`](@ref).
+
+The returned dictionary contains the preferred and traditional IUPAC names, molecular
+weight, molecular formula, molecular mass, SMILES string, and charge when those fields
+are present in the PubChem payload.
+"""
 function extract_properties(data)
     properties = Dict()
 
@@ -111,9 +133,7 @@ Example:
 @species H2(t)
 @attach_metadata H2
 ```
-
 """
-
 macro attach_metadata(variable, name)
     properties = get_compound_properties(name)
     return quote

@@ -1,5 +1,5 @@
 module PubChem
-using HTTP: HTTP
+using Downloads: Downloads
 using JSON: JSON
 using Catalyst: Catalyst, Reaction
 using ModelingToolkit: ModelingToolkit

@@ -44,10 +44,7 @@ Given a solution with molarity 0.400 mol/L and volume 0.300 L:
 ```julia
 moles_by_volume(0.400, 0.300) == 0.120
 ```
-
 """
-
-# Calculate number of moles given the molarity and volume
 function moles_by_volume(molarity, volume)
     return molarity * volume
 end
@@ -65,10 +62,7 @@ Calculate number of moles given the compound and its mass.
 
 moles_by_mass(MnO2, 95)
 ```
-
 """
-
-# Calculate number of moles given the compound and its mass.
 function moles_by_mass(compound, mass)
     weight = molecular_weight(compound)
     return mass / weight
@@ -90,7 +84,6 @@ A tuple `(limiting_species, moles)` where `limiting_species` is the limiting rea
 This function requires arrays with fast scalar indexing. GPU arrays (e.g., CuArray)
 are not supported due to the iterative nature of the algorithm.
 """
-
 function limiting_reagent(reaction::Reaction, masses::AbstractVector)
     if !ArrayInterface.fast_scalar_indexing(masses)
         throw(
@@ -130,7 +123,6 @@ Calculate the theoretical yield (in grams) of the given product species in the r
 # Returns
 The theoretical yield in grams.
 """
-
 function theoretical_yield(reaction::Reaction, masses::AbstractVector, product::Num)
     lr, m = limiting_reagent(reaction, masses)
     return m * molar_ratio(reaction, product, lr) * molecular_weight(product)

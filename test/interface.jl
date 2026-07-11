@@ -1,4 +1,4 @@
-using Catalyst, HTTP, JSON, Test, SafeTestsets, PubChem
+using Catalyst, JSON, Test, SafeTestsets, PubChem
 
 # Tests for JSON retrieval
 
@@ -83,7 +83,7 @@ end
 
 # check errors are good
 # Note: The exact exception type can vary based on PubChem API behavior
-# (KeyError vs HTTP.Exceptions.StatusError), so we accept any exception
+# (KeyError vs request errors), so we accept any exception
 let
     @test_throws Exception chemical_properties("complete nonsense111")  # would give a RequestError
     @test_throws Exception chemical_properties("completenonsense111")  # would 404
