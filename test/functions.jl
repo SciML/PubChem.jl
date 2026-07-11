@@ -1,4 +1,4 @@
-using Catalyst, HTTP, JSON, PubChem, Test, SafeTestsets
+using Catalyst, JSON, PubChem, Test, SafeTestsets
 
 # Test molar_ratio functionality
 let
