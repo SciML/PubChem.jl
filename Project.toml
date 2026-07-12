@@ -1,6 +1,6 @@
 name = "PubChem"
 uuid = "1db272ca-bb6a-4d7c-9426-e93aef723262"
-version = "1.2.2"
+version = "1.2.3"
 authors = ["Lalit Chauhan"]
 
 [deps]
