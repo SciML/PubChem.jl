@@ -14,9 +14,9 @@ makedocs(
         assets = ["assets/favicon.ico"],
         canonical = "https://docs.sciml.ai/PubChem/stable/"
     ),
-    modules = [PubChem, Catalyst],
-    doctest = false,
-    warnonly = [:missing_docs, :cross_references],
+    modules = [PubChem],
+    doctest = true,
+    checkdocs = :exports,
     pages = pages
 )
 

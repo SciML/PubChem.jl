@@ -33,7 +33,26 @@ end
 """
     get_compound(name::AbstractString | cid::Integer)
 
-Return a JSON file containing chemical properties of the given compound.
+Retrieve PubChem's JSON compound record by name or compound identifier.
+
+# Arguments
+- `name::AbstractString`: A PubChem-recognized compound name, such as `"water"`.
+- `cid::Integer`: A PubChem Compound Identifier (CID), such as `962` for water.
+
+# Returns
+- A JSON object represented by Julia dictionaries and vectors.
+
+# Throws
+- `KeyError`: The PubChem endpoint responds with HTTP 404 for `name` or `cid`.
+- `Downloads.RequestError`: The request cannot be completed for another HTTP or network
+  reason.
+
+# Examples
+```julia
+water = get_compound(962)
+properties = extract_properties(water)
+properties["Molecular_formula"] # "H2O"
+```
 """
 function get_compound end
 
@@ -70,9 +89,21 @@ get_compound(x::Symbol) = get_compound(String(x))
 Extract PubChem compound properties from the JSON object returned by
 [`get_compound`](@ref).
 
-The returned dictionary contains the preferred and traditional IUPAC names, molecular
-weight, molecular formula, molecular mass, SMILES string, and charge when those fields
-are present in the PubChem payload.
+# Arguments
+- `data`: A compound record returned by [`get_compound`](@ref), with the PubChem PUG
+  JSON layout.
+
+# Returns
+- A `Dict` whose available keys are `"IUPAC_Name_Preferred"`,
+  `"IUPAC_Name_Traditional"`, `"Molecular_weight"`, `"Molecular_formula"`,
+  `"Molecular_mass"`, `"Smiles"`, and `"Charge"`. PubChem omits some properties for
+  some compounds, so all keys except `"Charge"` are conditional on the response.
+
+# Examples
+```julia
+properties = extract_properties(get_compound("water"))
+properties["IUPAC_Name_Preferred"] # "oxidane"
+```
 """
 function extract_properties(data)
     properties = Dict()
@@ -123,15 +154,26 @@ function get_compound_properties(name)
 end
 
 """
-    @attach_metadata
+    @attach_metadata species [name_or_cid]
 
-Attach chemical properties fetched from PubChem to the given species.
+Fetch chemical properties from PubChem and attach them as ModelingToolkit metadata to
+`species`.
 
-Example:
+# Arguments
+- `species`: A ModelingToolkit or Catalyst symbolic species variable.
+- `name_or_cid`: Optional `AbstractString`, `Symbol`, or integer CID identifying the
+  compound. When omitted, the species name is used as the PubChem query.
+
+# Returns
+- The macro expands to an assignment that replaces `species` with a metadata-annotated
+  symbolic variable. The attached properties can be read with [`chemical_properties`](@ref).
+
+# Examples
 ```julia
 @variables t
 @species H2(t)
 @attach_metadata H2
+chemical_properties(H2)["Molecular_formula"] # "H2"
 ```
 """
 macro attach_metadata(variable, name)

@@ -3,8 +3,4 @@ using PubChem
 using JET
 using Test
 
-run_qa(
-    PubChem;
-    explicit_imports = true,
-    api_docs_kwargs = (; rendered = true),
-)
+run_qa(PubChem)

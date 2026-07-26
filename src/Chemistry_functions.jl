@@ -1,15 +1,24 @@
 """
     molar_ratio(reaction::Reaction, species1, species2)
 
-Calculate the molar ratio of two species in a reaction.
+Return the stoichiometric ratio of `species1` to `species2` in `reaction`.
 
 # Arguments
-- `reaction`: A Catalyst reaction
-- `species1`: First species in the reaction
-- `species2`: Second species in the reaction
+- `reaction::Reaction`: A Catalyst reaction containing both species.
+- `species1`: The numerator species.
+- `species2`: The denominator species.
 
 # Returns
-A `Rational` number representing the ratio of the stoichiometric coefficients of `species1` to `species2`.
+- A `Rational` equal to the stoichiometric coefficient of `species1` divided by that
+  of `species2`.
+
+# Throws
+- `ErrorException`: Either species is not a substrate or product of `reaction`.
+
+# Examples
+```julia
+molar_ratio(reaction, Al, Cl2) # 2//3 for 2Al + 3Cl2 -> 2AlCl3
+```
 """
 function molar_ratio(reaction::Reaction, species1, species2)
     coeff1 = find_coefficient(reaction, species1)
@@ -31,16 +40,19 @@ function find_coefficient(reaction::Reaction, species)
 end
 
 """
-    moles_by_volume(molarity::Float64, volume::Float64)
+    moles_by_volume(molarity, volume)
 
-Calculate number of moles given the molarity and volume.
+Calculate the number of moles in a solution from molarity and volume.
 
 # Arguments
-- `molarity`: Molarity of the solution (in mol/L)
-- `volume`: Volume of the solution (in liters)
+- `molarity`: Amount concentration in mol/L.
+- `volume`: Solution volume in L.
 
-# Example
-Given a solution with molarity 0.400 mol/L and volume 0.300 L:
+# Returns
+- The product `molarity * volume`, preserving the arithmetic type selected by the
+  input values.
+
+# Examples
 ```julia
 moles_by_volume(0.400, 0.300) == 0.120
 ```
@@ -50,11 +62,19 @@ function moles_by_volume(molarity, volume)
 end
 
 """
-    moles_by_mass(species, mass::Float64)
+    moles_by_mass(species, mass)
 
-Calculate number of moles given the compound and its mass.
+Calculate the amount of `species` from a supplied mass.
 
-# Example
+# Arguments
+- `species`: A metadata-annotated symbolic species, compound name, or PubChem CID
+  accepted by [`molecular_weight`](@ref).
+- `mass`: Mass in grams.
+
+# Returns
+- `mass / molecular_weight(species)` in moles.
+
+# Examples
 ```julia
 @variables t
 @species MnO2(t)
@@ -71,18 +91,25 @@ end
 """
     limiting_reagent(reaction::Reaction, masses::AbstractVector)
 
-Calculate the limiting reagent in the reaction given the masses of the reactants.
+Find the substrate with the fewest available moles in a reaction.
 
 # Arguments
-- `reaction`: A balanced Catalyst reaction
-- `masses`: Vector of masses of the reactants (in grams)
+- `reaction::Reaction`: A balanced Catalyst reaction.
+- `masses::AbstractVector`: Substrate masses in grams, in the same order as
+  `reaction.substrates`.
 
 # Returns
-A tuple `(limiting_species, moles)` where `limiting_species` is the limiting reagent and `moles` is its number of moles.
+A tuple `(limiting_species, moles)`, where `moles` is the available amount of that
+species.
 
-# Note
-This function requires arrays with fast scalar indexing. GPU arrays (e.g., CuArray)
-are not supported due to the iterative nature of the algorithm.
+# Throws
+- `ArgumentError`: `masses` does not support fast scalar indexing. GPU arrays are not
+  supported because the calculation scans values on the host.
+
+# Examples
+```julia
+limiting_reagent(reaction, [2.8, 4.15]) # (Cl2, 0.0585...)
+```
 """
 function limiting_reagent(reaction::Reaction, masses::AbstractVector)
     if !ArrayInterface.fast_scalar_indexing(masses)
@@ -113,15 +140,25 @@ end
 """
     theoretical_yield(reaction::Reaction, masses::AbstractVector, product::Num)
 
-Calculate the theoretical yield (in grams) of the given product species in the reaction, given the masses of the reactants.
+Calculate the theoretical mass yield of a product from substrate masses.
 
 # Arguments
-- `reaction`: A balanced Catalyst reaction
-- `masses`: Vector of masses of the reactants (in grams)
-- `product`: The product species for which to calculate the theoretical yield
+- `reaction::Reaction`: A balanced Catalyst reaction.
+- `masses::AbstractVector`: Substrate masses in grams, ordered as
+  `reaction.substrates`.
+- `product::Num`: A product symbolic species in `reaction`.
 
 # Returns
-The theoretical yield in grams.
+The theoretical product mass in grams.
+
+# Throws
+- `ArgumentError`: `masses` does not support fast scalar indexing.
+- `ErrorException`: `product` is not in `reaction`.
+
+# Examples
+```julia
+theoretical_yield(reaction, [2.8, 4.15], AlCl3) # 5.2032...
+```
 """
 function theoretical_yield(reaction::Reaction, masses::AbstractVector, product::Num)
     lr, m = limiting_reagent(reaction, masses)
