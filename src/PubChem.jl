@@ -3,6 +3,7 @@ using Downloads: Downloads
 using JSON: JSON
 using Catalyst: Catalyst, Reaction
 using ModelingToolkit: ModelingToolkit
+using PrecompileTools: @compile_workload, @setup_workload
 using Symbolics: Symbolics, Num
 using SymbolicUtils: BasicSymbolic
 using ArrayInterface: ArrayInterface
@@ -22,5 +23,23 @@ export chemical_properties, molecular_weight
 export molecular_formula, molecular_mass
 export IUPAC_Name_Preferred, IUPAC_Name_Traditional
 export smiles, charge
+
+@setup_workload begin
+    @compile_workload begin
+        Symbolics.@variables x
+        x = ModelingToolkit.setmetadata(
+            x, CompoundProperties,
+            Dict(
+                "Molecular_weight" => 18.015,
+                "Molecular_formula" => "H2O",
+                "Charge" => 0,
+            ),
+        )
+        molecular_weight(x)
+        molecular_formula(x)
+        moles_by_mass(x, 18.015)
+        moles_by_volume(0.4, 0.3)
+    end
+end
 
 end
