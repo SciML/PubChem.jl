@@ -4,7 +4,7 @@ Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 PubChem = "1db272ca-bb6a-4d7c-9426-e93aef723262"
 
 [sources]
-PubChem = {path = "/home/runner/work/PubChem.jl/PubChem.jl"}
+PubChem = {path = "/home/runner/_work/PubChem.jl/PubChem.jl"}
 
 [compat]
 Catalyst = "13, 14, 16.2"
