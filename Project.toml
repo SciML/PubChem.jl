@@ -23,6 +23,7 @@ ModelingToolkit = "11.26"
 PrecompileTools = "1.2"
 SafeTestsets = "0.1"
 SciMLTesting = "2.4"
+Sockets = "1"
 SymbolicUtils = "4.34"
 Symbolics = "7.39.2"
 Test = "1"
@@ -32,7 +33,8 @@ julia = "1.10"
 JLArrays = "27aeb0d3-9eb9-45fb-866b-73c2ecf80fcb"
 SafeTestsets = "1bc83da4-3b8d-516f-aca4-4fe02f6d838f"
 SciMLTesting = "09d9d899-5365-40a9-917a-5f67fddea283"
+Sockets = "6462fe0b-24de-5631-8697-dd941f90decc"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["Test", "SafeTestsets", "SciMLTesting", "JLArrays"]
+test = ["Test", "SafeTestsets", "SciMLTesting", "JLArrays", "Sockets"]

@@ -11,7 +11,8 @@ function get_json_from_url(url; retries = 5, retry_delay = 1)
             if err isa Downloads.RequestError &&
                     err.response.status >= 500 &&
                     attempt <= retries
-                sleep(retry_delay)
+                # Exponential backoff gives an overloaded endpoint time to recover.
+                sleep(retry_delay * 2.0^(attempt - 1))
             else
                 rethrow()
             end
