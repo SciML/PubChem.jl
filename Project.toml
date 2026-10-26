@@ -15,7 +15,7 @@ Symbolics = "0c5d862f-8b57-4792-8d23-62f2024744c7"
 
 [compat]
 ArrayInterface = "7"
-Catalyst = "16.2"
+Catalyst = "16.2, 17"
 Downloads = "1"
 JLArrays = "0.3, 0.4"
 JSON = "1.6"
